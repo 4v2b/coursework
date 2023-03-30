@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PromotionAggregator.Logic
+namespace PromotionAggregator.Logic.Models
 {
-    public class Class1
+    internal enum Category
     {
+        Garden, Fashion, Electronics, Books, Health, Accesories
     }
 }
