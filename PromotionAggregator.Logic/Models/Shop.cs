@@ -8,8 +8,17 @@ namespace PromotionAggregator.Logic.Models
 {
     internal class Shop
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Url { get; set; }
+        private string name;
+        private string url;
+
+        public Shop(string name, string url)
+        {
+            Name = name;
+            Url = url;
+        }
+
+        public int Id { get; private set; }
+        public string Name { get; private set; }
+        public string Url { get; private set; }
     }
 }

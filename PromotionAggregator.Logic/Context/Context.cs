@@ -1,37 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ServiceModel;
 using PromotionAggregator.Logic.Models;
+using PromotionAggregator.Logic.Services;
 
 namespace PromotionAggregator.Logic.Contexts
 {
     internal class Context
     {
-        private List<Promotion> promotionList;
-        private List<User> userList;
-        private List<Shop> shopList;
+        private static Context instance = null;
 
-        public Context(List<Promotion> promotionList, List<User> userList, List<Shop> shopList)
+        private List<Promotion> promotions;
+        private List<User> users;
+        private List<Shop> shops;
+
+        private Context()
         {
-            PromotionList = promotionList;
-            UserList = userList;
-            ShopList = shopList;
-            
+
         }
 
-        public List<Promotion> PromotionList {
-            get => promotionList;
-            private set => promotionList = value;
-        }
-        public List<User> UserList
+        public static Context Instance
         {
-            get => userList;
-            private set => userList = value;
+            get
+            {
+                if (instance == null)
+                    instance = new Context();
+                return instance;
+            }
         }
-        public List<Shop> ShopList
+
+        public List<Promotion> Promotions {
+            get => promotions;
+            private set => promotions = value;
+        }
+
+        public List<User> Users
         {
-            get => shopList;
-            private set => shopList = value;
+            get => users;
+            private set => users = value;
         }
+
+        public List<Shop> Shops
+        {
+            get => shops;
+            private set => shops = value;
+        }
+
+        public void SaveAll()
+        {
+
+        }
+
     }
 
 }

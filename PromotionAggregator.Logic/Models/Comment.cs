@@ -8,8 +8,15 @@ namespace PromotionAggregator.Logic.Models
 {
     internal class Comment
     {
-        public string AuthorId {get; set;}
-        public DateTime PublicationDate { get; set;}
-        public string Text { get; set;}
+        private string text;
+
+        public Comment(string text, DateTime date)
+        {
+            PublicationDate = date;
+            Text = text;
+        }
+
+        public DateTime PublicationDate { get; private set;}
+        public string Text { get; private set;}
     }
 }

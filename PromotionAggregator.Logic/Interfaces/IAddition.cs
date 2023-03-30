@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PromotionAggregator.Logic.Services
+namespace PromotionAggregator.Logic.Interfaces
 {
-    internal class DisplayContentManager
+    internal interface IAddition<T>
     {
+        void Add(T item);
     }
 }
