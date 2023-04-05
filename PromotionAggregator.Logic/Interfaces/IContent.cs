@@ -11,6 +11,6 @@ namespace PromotionAggregator.Logic.Interfaces
     {
         List<T> Search(string matching);
 
-        List<T> Filter(bool onlyCode, int order);
+        List<T> Filter(int filter, int order);
     }
 }

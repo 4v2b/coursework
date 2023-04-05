@@ -4,7 +4,7 @@ using System.ServiceModel;
 using PromotionAggregator.Logic.Models;
 using PromotionAggregator.Logic.Services;
 
-namespace PromotionAggregator.Logic.Contexts
+namespace PromotionAggregator.Logic.Context
 {
     internal class Context
     {

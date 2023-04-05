@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PromotionAggregator.Logic.Contexts
+namespace PromotionAggregator.Logic.Context
 {
     internal class Importer
     {
