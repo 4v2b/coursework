@@ -1,30 +1,25 @@
-﻿using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
-using PromotionAggregator.Logic.Models;
 
 namespace PromotionAggregator.Logic.Context
 {
-    public class PromotionConverter: JsonConverter
-    {  
-            public override bool CanConvert(Type objectType)=>typeof(Promotion).IsAssignableFrom(objectType);
+    public class PromotionConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            throw new NotImplementedException();
+        }
 
-            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-            {
-                JObject jo = JObject.Load(reader);
-                var url = jo["url"];
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
 
-                Promotion item;
-                if (url == null)
-                    item = new PromoСode();
-                else
-                    item = new SpecialOffer();
-                serializer.Populate(jo.CreateReader(), item);
-                return item;
-            }
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
 
-            public override bool CanWrite { get => false;}
-            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-                =>throw new NotImplementedException();     
+        public override bool CanWrite { get => throw new NotImplementedException(); }
     }
 }

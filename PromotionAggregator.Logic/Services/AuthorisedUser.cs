@@ -1,13 +1,10 @@
 ﻿using PromotionAggregator.Logic.Models;
 using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace PromotionAggregator.Logic.Services
 {
     public class AuthorisedUser:User
     {
-        [JsonInclude]
         private Wishlist wishlist;
 
         public AuthorisedUser(string email, string password):
@@ -18,32 +15,24 @@ namespace PromotionAggregator.Logic.Services
 
         public AuthorisedUser() : base() { }
 
-        [JsonIgnore]
         public Wishlist Wishlist
         {
-            get => wishlist;
+            get => throw new NotImplementedException();
         }
 
         public void PostComment(string text, string promotionId)
         {
-            var comments = Context.Context.Instance.Promotions.Find(x => x.Id.Equals(promotionId))?.Comments;
-            if (comments == null)
-                throw new ArgumentException();
-            else
-                comments.Add(new Comment(text, DateTime.Now, Id));
+           throw new NotImplementedException();
         }
 
         public void AddToWishlist(string promotionId)
         {
-            if (string.IsNullOrEmpty(promotionId))
-                throw new ArgumentException();
-            wishlist.Add(promotionId);
+            throw new NotImplementedException();
         }
 
         public bool RemoveFromWishlist(string promotionId)
         {
-            return wishlist.Remove(promotionId);
+            throw new NotImplementedException();
         }
-
     }
 }

@@ -1,41 +1,27 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Net.Mail;
+﻿using System;
 
 namespace PromotionAggregator.Logic.Models
 {
     public class Shop
     {
-        [JsonProperty]
-        private string name = string.Empty;
-
-        [JsonProperty]
-        private string url = string.Empty;
+        private string name;
+        private string url;
 
         public Shop()
         {
             Id = Guid.NewGuid().ToString();
         }
 
-        [JsonProperty]
         public string Id { get; private set; }
 
-        [JsonIgnore]
-        public string Name { get=>name;
-            set {
-                if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException();
-                name = value;
-            } }
+        public string Name {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
 
-        [JsonIgnore]
-        public string Url { get=>url; 
-            set
-            {
-                if (!Uri.IsWellFormedUriString(value, UriKind.Absolute))
-                    throw new ArgumentException();
-                url = value;
-            }
+        public string Url {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
         }
     }
 }

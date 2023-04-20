@@ -1,24 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace PromotionAggregator.Logic.Models
 {
     public class SpecialOffer : Promotion
     {
-        [JsonProperty]
-        private string url = string.Empty;
+        private string url;
 
-        [JsonIgnore]
         public string Url 
-        { 
-            get=>url;
-            set
-            {
-                if (!Uri.IsWellFormedUriString(value, UriKind.Absolute))
-                    throw new ArgumentException();
-                url = value;
-            }
+        {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
         }
     }
 }

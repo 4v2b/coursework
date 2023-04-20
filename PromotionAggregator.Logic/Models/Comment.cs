@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PromotionAggregator.Logic.Models
 {
@@ -22,28 +18,24 @@ namespace PromotionAggregator.Logic.Models
 
         public string Text
         {
-            get => text;
+            get => throw new NotImplementedException();
             private set
             {
-                if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException();
-                text = value;
+                throw new NotImplementedException();
             }
         }
         public string UserId
         {
-            get=>userId; 
+            get=> throw new NotImplementedException(); 
             private set
             {
-                if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException();
-                userId = value;
+                throw new NotImplementedException();
             }
         }
 
         public int CompareTo(Comment other)
         {
-            return PublicationDate.CompareTo(other.PublicationDate);
+            throw new NotImplementedException();
         }
     }
 }
