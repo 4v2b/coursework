@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PromotionAggregator.Logic.Context;
 using PromotionAggregator.Logic.Models;
-using PromotionAggregator.Logic.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -1,9 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PromotionAggregator.Logic.Services;
 using PromotionAggregator.Logic.Models;
 using PromotionAggregator.Logic.Context;
@@ -36,7 +33,7 @@ namespace PromotionAggregator.Tests.Tests
             //Arrange
             Admin admin = GetDefaultAdmin();
 
-            //Act+Assert
+            //Act + Assert
             Assert.ThrowsException<ArgumentNullException>(() => admin.AddShop(null));
         }
 
@@ -50,11 +47,9 @@ namespace PromotionAggregator.Tests.Tests
             admin.AddPromotion(promotion);
 
             //Act
-
             result = admin.RemovePromotion(promotion.Id);
 
             //Assert
-
             Assert.IsTrue(result);
         }
 
@@ -67,11 +62,9 @@ namespace PromotionAggregator.Tests.Tests
             Promotion promotion = new SpecialOffer();
 
             //Act
-
             result = admin.RemovePromotion(promotion.Id);
 
             //Assert
-
             Assert.IsFalse(result);
         }
 
@@ -85,11 +78,9 @@ namespace PromotionAggregator.Tests.Tests
             admin.AddShop(shop);
 
             //Act
-
             result = admin.RemoveShop(shop.Id);
 
             //Assert
-
             Assert.IsTrue(result);
         }
 
@@ -102,11 +93,9 @@ namespace PromotionAggregator.Tests.Tests
             Shop shop = new Shop();
 
             //Act
-
             result = admin.RemoveShop(shop.Id);
 
             //Assert
-
             Assert.IsFalse(result);
         }
 
@@ -121,7 +110,6 @@ namespace PromotionAggregator.Tests.Tests
             Promotion promotion = new SpecialOffer();
             admin.AddPromotion(promotion);
             user.PostComment("Temp", promotion.Id);
-
 
             //Act
             result = admin.RemoveComment(user.Id, promotion.Id);
@@ -140,11 +128,9 @@ namespace PromotionAggregator.Tests.Tests
             admin.AddPromotion(promotion);
 
             //Act
-
             result = admin.RemoveComment("id", promotion.Id);
 
             //Assert
-
             Assert.IsFalse(result);
         }
 
@@ -159,11 +145,9 @@ namespace PromotionAggregator.Tests.Tests
             Promotion promotion = new SpecialOffer();
 
             //Act
-
             result = admin.RemoveComment(user.Id, promotion.Id);
 
             //Assert
-
             Assert.IsFalse(result);
         }
 
@@ -177,7 +161,6 @@ namespace PromotionAggregator.Tests.Tests
             promotion.Categories.Add(Category.Books);
             Admin admin = GetDefaultAdmin();
 
-
             //Act + Assert
             Assert.ThrowsException<ArgumentException>(() => admin.UpdateCategories(promotion.Id, Category.Books));
         }
@@ -187,7 +170,6 @@ namespace PromotionAggregator.Tests.Tests
         {
             //Arrange
             Admin admin = GetDefaultAdmin();
-
 
             //Act + Assert
             Assert.ThrowsException<ArgumentException>(() => admin.UpdateCategories("id", Category.Electronics));

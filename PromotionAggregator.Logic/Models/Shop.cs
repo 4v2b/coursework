@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Net.Mail;
 
 namespace PromotionAggregator.Logic.Models
 {
@@ -26,7 +25,8 @@ namespace PromotionAggregator.Logic.Models
                 if (string.IsNullOrEmpty(value))
                     throw new ArgumentException();
                 name = value;
-            } }
+            } 
+        }
 
         [JsonIgnore]
         public string Url { get=>url; 

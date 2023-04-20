@@ -8,7 +8,6 @@ namespace PromotionAggregator.Logic.Models
         [JsonProperty]
         private string code = string.Empty;
 
-
         [JsonIgnore]
         public string Code { get=>code;
              set {

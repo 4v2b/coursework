@@ -57,7 +57,7 @@ namespace PromotionAggregator.Logic.Models
             set 
             {
                 if (value > 0 && value <= 5)
-                    rating = (value + Rating) / ++ratingCounter;
+                    rating = (Rating * ratingCounter++ + value) / (ratingCounter+1);
                 else throw new ArgumentException();
             } 
         }

@@ -1,13 +1,8 @@
-﻿using Google.Apis.Auth.OAuth2.Requests;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PromotionAggregator.Logic.Models;
 using PromotionAggregator.Logic.Services;
 using PromotionAggregator.Logic.Context;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PromotionAggregator.Tests.Tests
 {
@@ -83,7 +78,6 @@ namespace PromotionAggregator.Tests.Tests
             bool result;
 
             //Act
-            
             result = user.RemoveFromWishlist(promotionId);
 
             //Assert
@@ -100,7 +94,6 @@ namespace PromotionAggregator.Tests.Tests
             bool result;
 
             //Act
-
             result = user.RemoveFromWishlist(promotionId);
 
             //Assert

@@ -7,7 +7,6 @@ namespace PromotionAggregator.Logic.Services
 {
     public class AuthorisedUser:User
     {
-
         public AuthorisedUser(string email, string password):
             base(email, password)
         {

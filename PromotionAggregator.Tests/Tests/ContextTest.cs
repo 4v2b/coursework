@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PromotionAggregator.Logic.Context;
 
 namespace PromotionAggregator.Tests.Tests
@@ -33,7 +28,6 @@ namespace PromotionAggregator.Tests.Tests
             Assert.IsNotNull(context.Shops);
             Assert.IsNotNull(context.Users);
         }
-
 
         [TestMethod]
         public void SaveAll_Returns_True_When_Searilization_Is_Successful()

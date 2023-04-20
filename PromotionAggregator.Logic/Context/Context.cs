@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using PromotionAggregator.Logic.Models;
 using PromotionAggregator.Logic.Services;
-using Windows.Networking.Connectivity;
 using System;
 using Newtonsoft.Json;
 
@@ -72,9 +71,6 @@ namespace PromotionAggregator.Logic.Context
                 return false;
             }
             return true;
-
         }
-
     }
-
 }

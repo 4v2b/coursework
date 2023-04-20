@@ -8,12 +8,10 @@ namespace PromotionAggregator.Logic.Services
     {
         public Admin(string email, string password) : base(email, password)
         {
-
         }
 
         public Admin(User user):base(user.Email, user.Password, true)
         {
-
         }
 
         public Admin():base() { }
