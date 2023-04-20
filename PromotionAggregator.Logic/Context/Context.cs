@@ -13,10 +13,10 @@ namespace PromotionAggregator.Logic.Context
 
         private Context()
         {
-            Initialize();
+            SetCollections();
         }
 
-        public void Initialize()
+        public void SetCollections()
         {
             
             try{ Promotions = JsonSerializer<Promotion>.Deserialize("promotions.json");}
@@ -27,7 +27,8 @@ namespace PromotionAggregator.Logic.Context
 
             try{Shops = JsonSerializer<Shop>.Deserialize("shops.json"); }
             catch{ Shops = new List<Shop>();}
-           
+
+            Promotions.RemoveAll(x => x.EndDate.Date.CompareTo(DateTime.Now.Date) < 0);
         }
 
         public static Context Instance

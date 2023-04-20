@@ -12,12 +12,26 @@ namespace PromotionAggregator.Tests.Tests
     public class ContextTest
     {
         [TestMethod]
-        public void Instance_Return_Same_Context_Instances()
+        public void Instance_returns_same_Context_instances()
         {
+            //Arrange + Act
             Context context1 = Context.Instance;
             Context context2 = Context.Instance;
 
+            //Assert
             Assert.AreEqual(context1, context2);
+        }
+
+        [TestMethod]
+        public void SetCollections_initialize_lists_when_instance_created()
+        {
+            //Arrange + Act
+            Context context = Context.Instance;
+
+            //Assert
+            Assert.IsNotNull(context.Promotions);
+            Assert.IsNotNull(context.Shops);
+            Assert.IsNotNull(context.Users);
         }
 
 

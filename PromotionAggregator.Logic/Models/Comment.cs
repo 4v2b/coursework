@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,10 @@ namespace PromotionAggregator.Logic.Models
 {
     public class Comment: IComparable<Comment>
     {
+        [JsonProperty]
         private string text;
+
+        [JsonProperty]
         private string userId;
 
         public Comment(string text, DateTime date, string userId)
@@ -20,6 +24,7 @@ namespace PromotionAggregator.Logic.Models
 
         public DateTime PublicationDate { get; private set;}
 
+        [JsonIgnore]
         public string Text
         {
             get => text;
@@ -30,6 +35,8 @@ namespace PromotionAggregator.Logic.Models
                 text = value;
             }
         }
+
+        [JsonIgnore]
         public string UserId
         {
             get=>userId; 

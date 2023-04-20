@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PromotionAggregator.Logic.Models;
 
 namespace PromotionAggregator.Logic.Interfaces
 {
-    interface IAddition<T>
+    interface IAddition
     {
-        void AddPromotion(T item);
+        void AddPromotion(Promotion item);
     }
 }

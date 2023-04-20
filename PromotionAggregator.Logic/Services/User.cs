@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace PromotionAggregator.Logic.Services
 {
-    public abstract class User : IAddition<Promotion>
+    public abstract class User : IAddition
     {
         [JsonProperty]
         private string email;
@@ -64,7 +64,7 @@ namespace PromotionAggregator.Logic.Services
             get => password;
         }
 
-        public static string HashPassword(string password)
+        private static string HashPassword(string password)
         {
             IBuffer buffer = CryptographicBuffer.ConvertStringToBinary(password, BinaryStringEncoding.Utf8);
             HashAlgorithmProvider hashProvider = HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Sha256);

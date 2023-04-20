@@ -62,8 +62,11 @@ namespace PromotionAggregator.Logic.Models
             } 
         }
 
-        public HashSet<Category> Categories { get; set; }
-        public List<Comment> Comments{ get; set; }
+        [JsonProperty]
+        public HashSet<Category> Categories { get; private set; }
+
+        [JsonProperty]
+        public List<Comment> Comments{ get; private set; }
 
 
     }

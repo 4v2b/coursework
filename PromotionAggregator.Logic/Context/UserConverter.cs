@@ -13,7 +13,7 @@ namespace PromotionAggregator.Logic.Context
             object existingValue, JsonSerializer serializer)
         {
             JObject jo = JObject.Load(reader);
-            var wishlist = jo["wishlist"];
+            var wishlist = jo["Wishlist"];
 
             User item;
             if (wishlist == null)

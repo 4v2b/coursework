@@ -7,6 +7,6 @@ namespace PromotionAggregator.Logic.Interfaces
     {
         List<T> Search(string matching);
 
-        List<T> Filter(FilterMode filter, double ratingLowerConstraint, int order);
+        List<T> Filter(FilterMode filter, double ratingLowerConstraint, int periodInDays);
     }
 }

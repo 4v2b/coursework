@@ -1,13 +1,11 @@
 ﻿using PromotionAggregator.Logic.Models;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace PromotionAggregator.Logic.Services
 {
     public class Admin: User
     {
-        [JsonConstructor]
         public Admin(string email, string password) : base(email, password)
         {
 

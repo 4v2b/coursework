@@ -7,21 +7,20 @@ namespace PromotionAggregator.Logic.Services
 {
     public class AuthorisedUser:User
     {
-        [JsonInclude]
-        private Wishlist wishlist;
 
         public AuthorisedUser(string email, string password):
             base(email, password)
         {
-            wishlist = new Wishlist();
+            Wishlist = new Wishlist();
         }
 
         public AuthorisedUser() : base() { }
 
-        [JsonIgnore]
+        [JsonInclude]
         public Wishlist Wishlist
         {
-            get => wishlist;
+            get;
+            private set;
         }
 
         public void PostComment(string text, string promotionId)
@@ -37,12 +36,12 @@ namespace PromotionAggregator.Logic.Services
         {
             if (string.IsNullOrEmpty(promotionId))
                 throw new ArgumentException();
-            wishlist.Add(promotionId);
+            Wishlist.Add(promotionId);
         }
 
         public bool RemoveFromWishlist(string promotionId)
         {
-            return wishlist.Remove(promotionId);
+            return Wishlist.Remove(promotionId);
         }
 
     }

@@ -8,7 +8,7 @@ namespace PromotionAggregator.Logic.Services
 
     public class Authentication
     {
-        private const string ADMIN_EMAIL = "admin.promotion.aggregator@mail.com";
+        private static readonly string adminEmail = "admin.promotion.aggregator@mail.com";
 
         public static User SignIn(string email, string password)
         {
@@ -34,7 +34,7 @@ namespace PromotionAggregator.Logic.Services
             if (users.Exists(x => x.Email.Equals(email)) || !password.Equals(repeatPassword))
                 throw new ArgumentException();
             User user;
-            if(email.Equals(ADMIN_EMAIL))
+            if(email.Equals(adminEmail))
                 user = new Admin(email, password);
             else user = new AuthorisedUser(email, password);
             users.Add(user);
