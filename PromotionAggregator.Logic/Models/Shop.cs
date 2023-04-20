@@ -1,24 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using System;
+using System.Net.Mail;
 
 namespace PromotionAggregator.Logic.Models
 {
-    internal class Shop
+    public class Shop
     {
-        private string name;
-        private string url;
+        [JsonProperty]
+        private string name = string.Empty;
 
-        public Shop(string name, string url)
+        [JsonProperty]
+        private string url = string.Empty;
+
+        public Shop()
         {
-            Name = name;
-            Url = url;
+            Id = Guid.NewGuid().ToString();
         }
 
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public string Url { get; private set; }
+        [JsonProperty]
+        public string Id { get; private set; }
+
+        [JsonIgnore]
+        public string Name { get=>name;
+            set {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException();
+                name = value;
+            } }
+
+        [JsonIgnore]
+        public string Url { get=>url; 
+            set
+            {
+                if (!Uri.IsWellFormedUriString(value, UriKind.Absolute))
+                    throw new ArgumentException();
+                url = value;
+            }
+        }
     }
 }

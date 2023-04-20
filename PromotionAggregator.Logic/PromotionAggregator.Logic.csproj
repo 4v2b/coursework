@@ -123,8 +123,8 @@
     <Compile Include="Context\Context.cs" />
     <Compile Include="Context\Importer.cs" />
     <Compile Include="Context\JsonSerializer.cs" />
-    <Compile Include="Interfaces\IAddition.cs" />
-    <Compile Include="Interfaces\IContent.cs" />
+    <Compile Include="Services\Interfaces\IAddition.cs" />
+    <Compile Include="Services\Interfaces\IContent.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Promotion.cs" />
@@ -141,8 +141,14 @@
     <EmbeddedResource Include="Properties\PromotionAggregator.Logic.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Google.Apis.Gmail.v1">
+      <Version>1.60.0.3014</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json">
+      <Version>7.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

@@ -1,31 +1,54 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+
 namespace PromotionAggregator.Logic.Models
 {
-    internal abstract class Promotion
+    public abstract class Promotion
     {
-        private double rating;
-        private int ratingCounter;
+        [JsonProperty]
+        private double rating = default;
 
-        private string shopId;
-        private string title;
-        private string description;
-        private List<Category> categories;
+        [JsonProperty]
+        private int ratingCounter = default;
 
-        public Promotion()
-        {
+        [JsonProperty]
+        private string title = string.Empty;
+
+        [JsonProperty]
+        private string description = string.Empty;
+
+        public Promotion() {
             Id = Guid.NewGuid().ToString();
-            categories = new List<Category>();
-            rating = 0;
-            ratingCounter = 1;
+            Categories = new HashSet<Category>();
+            Comments = new List<Comment>();
         }
 
-        public string Id { get; private set; }
-        public string Title { get=>title; set=> title = value; }
-        public string Description { get=>description; set=>description = value; }
-        public DateTime AddingDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public string ShopId { get; set; } = string.Empty;
 
+        [JsonProperty]
+        public string Id { get; private set; }
+
+        [JsonIgnore]
+        public string Title { get=>title; set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException();
+                title = value;
+            }
+            }
+
+        [JsonIgnore]
+        public string Description { get=>description; set {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException(); 
+                description = value; 
+            } }
+
+        public DateTime AddingDate { get; set; } = DateTime.Now;
+        public DateTime EndDate { get; set; } = DateTime.Now;
+
+        [JsonIgnore]
         public double Rating {
             get 
             {
@@ -34,10 +57,14 @@ namespace PromotionAggregator.Logic.Models
             set 
             {
                 if (value > 0 && value <= 5)
-                    rating += value / ratingCounter++;
+                    rating = (value + Rating) / ++ratingCounter;
                 else throw new ArgumentException();
             } 
         }
-        public List<Category> Categories { get; private set; }
+
+        public HashSet<Category> Categories { get; set; }
+        public List<Comment> Comments{ get; set; }
+
+
     }
 }

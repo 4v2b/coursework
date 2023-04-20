@@ -1,22 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ServiceModel;
+﻿using System.Collections.Generic;
 using PromotionAggregator.Logic.Models;
 using PromotionAggregator.Logic.Services;
+using Windows.Networking.Connectivity;
+using System;
+using Newtonsoft.Json;
 
 namespace PromotionAggregator.Logic.Context
 {
-    internal class Context
+    public class Context
     {
         private static Context instance = null;
 
-        private List<Promotion> promotions;
-        private List<User> users;
-        private List<Shop> shops;
-
         private Context()
         {
+            Initialize();
+        }
 
+        public void Initialize()
+        {
+            
+            try{ Promotions = JsonSerializer<Promotion>.Deserialize("promotions.json");}
+            catch{Promotions = new List<Promotion>();}
+
+            try{ Users = JsonSerializer<User>.Deserialize("users.json");}
+            catch{ Users = new List<User>();}
+
+            try{Shops = JsonSerializer<Shop>.Deserialize("shops.json"); }
+            catch{ Shops = new List<Shop>();}
+           
         }
 
         public static Context Instance
@@ -29,25 +40,37 @@ namespace PromotionAggregator.Logic.Context
             }
         }
 
+        [JsonConverter(typeof(PromotionConverter))]
         public List<Promotion> Promotions {
-            get => promotions;
-            private set => promotions = value;
+            get;
+            private set;
         }
 
         public List<User> Users
         {
-            get => users;
-            private set => users = value;
+            get;
+            private set;
         }
 
         public List<Shop> Shops
         {
-            get => shops;
-            private set => shops = value;
+            get;
+            private set;
         }
 
-        public void SaveAll()
+        public bool SaveAll()
         {
+            try
+            {
+                JsonSerializer<Promotion>.Serialize("promotions.json", Promotions);
+                JsonSerializer<User>.Serialize("users.json", Users);
+                JsonSerializer<Shop>.Serialize("shops.json", Shops);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
 
         }
 

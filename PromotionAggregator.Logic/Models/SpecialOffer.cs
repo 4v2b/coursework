@@ -1,23 +1,23 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace PromotionAggregator.Logic.Models
 {
-    internal class SpecialOffer : Promotion
+    public class SpecialOffer : Promotion
     {
-        private string url;
+        [JsonProperty]
+        private string url = string.Empty;
 
-        public SpecialOffer(string url)
-        {
-            Url = url;
-        }
-
+        [JsonIgnore]
         public string Url 
         { 
             get=>url;
-            private set
+            set
             {
-                if (!value.Contains("http://") || !value.Contains("https://"))
-                    throw new ArgumentException("Wrong address!");
+                if (!Uri.IsWellFormedUriString(value, UriKind.Absolute))
+                    throw new ArgumentException();
+                url = value;
             }
         }
     }

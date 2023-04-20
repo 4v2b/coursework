@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PromotionAggregator.Tests.Tests
+namespace PromotionAggregator.Logic.Interfaces
 {
-    internal class ImporterTest
+    interface IAddition<T>
     {
+        void AddPromotion(T item);
     }
 }

@@ -1,11 +1,21 @@
-﻿namespace PromotionAggregator.Logic.Models
+﻿using Newtonsoft.Json;
+using System;
+
+namespace PromotionAggregator.Logic.Models
 {
-    internal class PromoСode : Promotion
+    public class PromoСode : Promotion
     {
-        public PromoСode(string code)
-        {
-            Code = code;
+        [JsonProperty]
+        private string code = string.Empty;
+
+
+        [JsonIgnore]
+        public string Code { get=>code;
+             set {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException();
+                code = value;
+            } 
         }
-        public string Code { get; set; }
     }
 }

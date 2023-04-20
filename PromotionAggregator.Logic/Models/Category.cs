@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PromotionAggregator.Logic.Models
 {
-    internal enum Category
+    public enum Category
     {
         Garden, Fashion, Electronics, Books, Health, Accesories
     }

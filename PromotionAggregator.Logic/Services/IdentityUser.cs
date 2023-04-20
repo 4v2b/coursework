@@ -1,12 +1,12 @@
 ﻿using PromotionAggregator.Logic.Interfaces;
 using PromotionAggregator.Logic.Models;
-using PromotionAggregator.Logic.Context;
 using System.Collections.Generic;
-using Windows.UI.Xaml.Controls.Maps;
+using System.Linq;
+using System;
 
 namespace PromotionAggregator.Logic.Services
 {
-    internal class IdentityUser: IContent<Promotion>
+    public class IdentityUser: IContent<Promotion>
     {
         private User user;
 
@@ -27,8 +27,10 @@ namespace PromotionAggregator.Logic.Services
             get
             {
                 if (user == null)
-                    throw new System.ArgumentNullException();
-                return user;
+                    throw new ArgumentNullException();
+                if(user is AuthorisedUser)
+                    return (AuthorisedUser)user;
+                return (Admin)user;
             }
         }
 
@@ -36,33 +38,51 @@ namespace PromotionAggregator.Logic.Services
 
         public List<Promotion> Search(string matching)
         {
-            Dictionary<Category, List<string>> pairs = new Dictionary<Category, List<string>>();
+            List<Promotion> list = Context.Context.Instance.Promotions;
 
-
-
-            return new List<Promotion>();
+            list = list.Where(x => x.Title.Contains(matching) || x.Description.Contains(matching))
+                .OrderBy(x => x.AddingDate)
+                .OrderBy(x => x.Rating).ToList<Promotion>();
+            Notify?.Invoke(list.Count);
+            return list;
         }
 
-        public List<Promotion> Filter(int promoCodeFilter = 0, int order = 0)
+        public List<Promotion> Filter(FilterMode mode, double ratingLowerConstraint = -1, int periodInDays = 0)
         {
             List<Promotion> promotions = Context.Context.Instance.Promotions;
-            List<Promotion> filteredList = new List<Promotion>();
-            if (promoCodeFilter < 0)
+            IEnumerable<Promotion> temp;
+            if (mode == FilterMode.OnlyCode)
             {
-               filteredList.AddRange(promotions.FindAll(x => x is PromoСode));
+                temp = promotions.Where(x => x is PromoСode);
             }
-            else if(promoCodeFilter > 0)
+            else if(mode == FilterMode.OnlyOffer)
             {
-                filteredList.AddRange(promotions.FindAll(x => x is SpecialOffer));
+                temp = promotions.Where(x => x is SpecialOffer);
             }
             else
             {
-                filteredList.AddRange(promotions);
+                temp = promotions;
             }
+            temp = temp.Where(x => x.Rating.CompareTo(ratingLowerConstraint) > -1);
 
+            if (periodInDays > 0)
+            {
+                temp = temp.Where(x => x.AddingDate.CompareTo(DateTime.Now.AddDays(-periodInDays)) >=0);
+            }
+            Notify?.Invoke(temp.Count());
+            return new List<Promotion>(temp);
+        }
 
-
-            return new List<Promotion>();
+        public List<Promotion> GetPromotionsInCategory(Category category)
+        {
+            List<Promotion> promotions = Context.Context.Instance.Promotions;
+            var list = from p in promotions 
+                       where p.Categories.Contains(category) 
+                       orderby p.AddingDate 
+                       orderby p.Rating 
+                       select p;
+            Notify?.Invoke(list.Count());
+            return list.ToList<Promotion>();
         }
 
     }

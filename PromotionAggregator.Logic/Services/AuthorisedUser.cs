@@ -1,40 +1,49 @@
 ﻿using PromotionAggregator.Logic.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace PromotionAggregator.Logic.Services
 {
-    internal class AuthorisedUser:User
+    public class AuthorisedUser:User
     {
+        [JsonInclude]
         private Wishlist wishlist;
-        private List<Comment> comments;
 
-        public AuthorisedUser(string id):base(id)
+        public AuthorisedUser(string email, string password):
+            base(email, password)
         {
-
+            wishlist = new Wishlist();
         }
 
-        public List<Comment> Comments
+        public AuthorisedUser() : base() { }
+
+        [JsonIgnore]
+        public Wishlist Wishlist
         {
-            get => comments;
+            get => wishlist;
         }
 
         public void PostComment(string text, string promotionId)
         {
-
+            var comments = Context.Context.Instance.Promotions.Find(x => x.Id.Equals(promotionId))?.Comments;
+            if (comments == null)
+                throw new ArgumentException();
+            else
+                comments.Add(new Comment(text, DateTime.Now, Id));
         }
 
         public void AddToWishlist(string promotionId)
         {
-
+            if (string.IsNullOrEmpty(promotionId))
+                throw new ArgumentException();
+            wishlist.Add(promotionId);
         }
 
-        public void RemoveFromWishlist(string promotionId)
+        public bool RemoveFromWishlist(string promotionId)
         {
-
+            return wishlist.Remove(promotionId);
         }
+
     }
 }
