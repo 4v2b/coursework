@@ -25,7 +25,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -121,8 +121,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Context\Context.cs" />
-    <Compile Include="Context\Importer.cs" />
     <Compile Include="Context\JsonSerializer.cs" />
+    <Compile Include="Context\PromotionConverter.cs" />
+    <Compile Include="Context\UserConverter.cs" />
+    <Compile Include="Services\FilterMode.cs" />
     <Compile Include="Services\Interfaces\IAddition.cs" />
     <Compile Include="Services\Interfaces\IContent.cs" />
     <Compile Include="Models\Category.cs" />
@@ -146,6 +148,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
       <Version>7.0.2</Version>

@@ -154,6 +154,12 @@
       <Version>6.2.14</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PromotionAggregator.Logic\PromotionAggregator.Logic.csproj">
+      <Project>{4ebba279-82d5-4e9d-90f0-ed27e2807159}</Project>
+      <Name>PromotionAggregator.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
