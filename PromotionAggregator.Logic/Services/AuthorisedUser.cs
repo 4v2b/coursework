@@ -1,7 +1,7 @@
-﻿using PromotionAggregator.Logic.Models;
+﻿using Newtonsoft.Json;
+using PromotionAggregator.Logic.Models;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace PromotionAggregator.Logic.Services
 {
@@ -15,7 +15,7 @@ namespace PromotionAggregator.Logic.Services
 
         public AuthorisedUser() : base() { }
 
-        [JsonInclude]
+        [JsonProperty]
         public Wishlist Wishlist
         {
             get;
