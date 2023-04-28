@@ -8,7 +8,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+	<Grid>
+		<TextBox x:Name="email" HorizontalAlignment="Left" Margin="700,435,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="30" Width="120"/>
+		<TextBox x:Name="password" HorizontalAlignment="Left" Margin="700,490,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="115"/>
+		<TextBox x:Name="repeatPassword" HorizontalAlignment="Left" Margin="702,543,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="113"/>
+		<Button x:Name="confirm" Content="Button" Margin="765,610,0,0" VerticalAlignment="Top" Click="confirm_Click"/>
 
-    </Grid>
+	</Grid>
 </Page>

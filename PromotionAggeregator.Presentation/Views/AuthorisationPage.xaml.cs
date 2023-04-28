@@ -1,10 +1,12 @@
-﻿using System;
+﻿using PromotionAggregator.Logic.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +27,20 @@ namespace PromotionAggeregator.Presentation.Views
         public AuthorisationPage()
         {
             this.InitializeComponent();
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                Authentication.SignIn(email.Text, password.Text);
+                Frame.Navigate(typeof(UserMainPage));
+            }
+            catch
+            {
+                await new MessageDialog("Something went wrong").ShowAsync();
+            }
         }
     }
 }

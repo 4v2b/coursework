@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PromotionAggeregator.Presentation.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -66,7 +67,10 @@ namespace PromotionAggeregator.Presentation
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+
+                    // Default start page
+                    // rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(GuestMainPage), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

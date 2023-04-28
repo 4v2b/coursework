@@ -1,13 +1,10 @@
-﻿using PromotionAggregator.Logic.Context;
-using PromotionAggregator.Logic.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,25 +20,16 @@ namespace PromotionAggeregator.Presentation.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class RegistrationPage : Page
+    public sealed partial class UserMainPage : Page
     {
-        public RegistrationPage()
+        public UserMainPage()
         {
             this.InitializeComponent();
         }
 
-        private async void confirm_Click(object sender, RoutedEventArgs e)
+        private void logout_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Authentication.Register(email.Text, password.Text, repeatPassword.Text);
-                Context.Instance.SaveAll();
-                Frame.Navigate(typeof(UserMainPage));
-            }
-            catch
-            {
-               await new MessageDialog("Something went wrong").ShowAsync();
-            }
+            Frame.Navigate(typeof(AuthorisationPage));
         }
     }
 }
