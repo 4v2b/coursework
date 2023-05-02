@@ -27,11 +27,7 @@
         <TextBlock Grid.Column="1" x:Name="description" TextWrapping="Wrap" Text="Description" FontSize="14" VerticalAlignment="Center" TextAlignment="Left" Grid.Row="2" Grid.ColumnSpan="2" Height="19" />
         <TextBlock x:Name="title" TextWrapping="Wrap" Text="Title" FontWeight="Bold" FontSize="20" TextAlignment="Center" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="27" Width="42"/>
 
-        <Border CornerRadius="10" 
-                    Background="Transparent" 
-                    BorderBrush="Azure" 
-                    BorderThickness="3" Grid.Column="3" Grid.Row="2" >
-            <Button Content="Button" Background="#33404040" UseLayoutRounding="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-        </Border>
+
+        <Button Grid.Column="3" Grid.Row="2" Content="Button" Background="#33404040" UseLayoutRounding="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
     </Grid>
 </UserControl>

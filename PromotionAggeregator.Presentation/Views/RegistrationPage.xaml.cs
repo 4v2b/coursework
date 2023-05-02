@@ -34,13 +34,17 @@ namespace PromotionAggeregator.Presentation.Views
         {
             try
             {
-                Authentication.Register(email.Text, password.Text, repeatPassword.Text);
+                Authentication.Register(email.Text, password.Password, repeatPassword.Password);
                 Context.Instance.SaveAll();
                 Frame.Navigate(typeof(UserMainPage));
             }
+            catch(ArgumentException ex)
+            {
+                message.Text = ex.Message;
+            }
             catch
             {
-               await new MessageDialog("Something went wrong").ShowAsync();
+
             }
         }
     }

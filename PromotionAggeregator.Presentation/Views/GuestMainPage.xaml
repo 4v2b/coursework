@@ -6,11 +6,51 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ls="using:PromotionAggeregator.Presentation.Services"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:local1="using:PromotionAggeregator.Presentation.ViewModels"
     mc:Ignorable="d"
     Background="#EFF5F5">
 
     <Grid Background="#EFF5F5">
-        <ListView x:Name="listView" ItemsSource="{x:Bind init.viewItems}" Margin="330,265,235,250" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionMode="None">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="12" Height="90" Background="AliceBlue" VerticalAlignment="Center" BorderThickness="0,0,0,3">
+            <Grid.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.BorderBrush>
+            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0"/>
+            <Button Content="Увійти" VerticalAlignment="Center" Click="SignInClick" HorizontalAlignment="Right" Margin="0,0,30,0"/>
+            <Button Content="Зареєструватися" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,120,0" Click="RegisterClick"/>
+        </Grid>
+        <ListView HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="11" Grid.Column="0" Grid.ColumnSpan="12" x:Name="listView" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionMode="None" HorizontalContentAlignment="Stretch">
         </ListView>
     </Grid>
 </Page>

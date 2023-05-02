@@ -12,20 +12,22 @@ namespace PromotionAggeregator.Presentation.Services
 {
     public class Init
     {
-        public List<PromotionModel> viewItems;
-        private List<Promotion> promotions;
+        //public List<PromotionModel> viewItems;
+        //private List<Promotion> promotions;
 
-        public Init()
+
+        public static List<PromotionModel> Convert(List<Promotion> promotions)
         {
-            promotions = Context.Instance.Promotions;
-            viewItems = new List<PromotionModel>();
-            foreach(var item in promotions)
+            List<PromotionModel> viewItems = new List<PromotionModel>();
+            foreach (var item in promotions)
             {
                 PromotionModel model = new PromotionModel();
                 model.Description = item.Description;
                 model.Title = item.Title;
                 viewItems.Add(model);
             }
+            return viewItems;
         }
+
     }
 }

@@ -125,7 +125,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Auth.cs" />
     <Compile Include="Services\Init.cs" />
-    <Compile Include="ViewModels\PromotionModel.xaml.cs">
+    <Compile Include="Views\SearchField.xaml.cs">
+      <DependentUpon>SearchField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PromotionModel.xaml.cs">
       <DependentUpon>PromotionModel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AuthorisationPage.xaml.cs">
@@ -165,7 +168,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ViewModels\PromotionModel.xaml">
+    <Page Include="Views\SearchField.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PromotionModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,6 +196,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml">
+      <Version>2.8.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

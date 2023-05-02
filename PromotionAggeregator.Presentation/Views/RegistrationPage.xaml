@@ -8,11 +8,19 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-	<Grid>
-		<TextBox x:Name="email" HorizontalAlignment="Left" Margin="700,435,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="30" Width="120"/>
-		<TextBox x:Name="password" HorizontalAlignment="Left" Margin="700,490,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="115"/>
-		<TextBox x:Name="repeatPassword" HorizontalAlignment="Left" Margin="702,543,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="113"/>
-		<Button x:Name="confirm" Content="Button" Margin="765,610,0,0" VerticalAlignment="Top" Click="confirm_Click"/>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="56*"/>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="102*"/>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="56*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="2" x:Name="email" Margin="0 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="TextBox"  Height="30"/>
+        <PasswordBox Grid.Column="2" x:Name="password" Margin="0 0 0 50" HorizontalAlignment="Center" VerticalAlignment="Center" Width="115" Height="32"/>
+        <PasswordBox Grid.Column="2" x:Name="repeatPassword" Margin="0 0 0 100" HorizontalAlignment="Center" VerticalAlignment="Center" Width="113" Height="32"/>
+        <TextBlock Grid.Column="2" x:Name="message" Margin="0 0 0 150" HorizontalAlignment="Center" VerticalAlignment="Center" Text="" Height="19"></TextBlock>
+        <Button Grid.Column="2" x:Name="confirm" Margin="0 0 0 200" Content="Зареєструватися" HorizontalAlignment="Center" VerticalAlignment="Center" Click="confirm_Click" Height="33"/>
 
-	</Grid>
+    </Grid>
 </Page>
