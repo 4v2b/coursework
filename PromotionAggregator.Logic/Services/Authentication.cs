@@ -8,7 +8,7 @@ namespace PromotionAggregator.Logic.Services
 
     public class Authentication
     {
-        private static readonly string adminEmail = "admin.promotion.aggregator@mail.com";
+        private static readonly string adminEmail = "admin@mail.com";
 
         public static User SignIn(string email, string password)
         {

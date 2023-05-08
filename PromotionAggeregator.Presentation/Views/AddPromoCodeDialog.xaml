@@ -1,0 +1,30 @@
+﻿<ContentDialog
+    x:Class="PromotionAggeregator.Presentation.Views.AddPromoCodeDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PromotionAggeregator.Presentation.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Додати промокод"
+    PrimaryButtonText="Відмінити"
+    SecondaryButtonText="ПІдтвердити"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Заголовок" Padding="5 10 0 5"></TextBlock>
+            <TextBox x:Name="titleBox" ></TextBox>
+
+            <TextBlock Text="Опис" Padding="5 10 0 5"></TextBlock>
+            <TextBox x:Name="descBox"></TextBox>
+            
+            <TextBlock Text="Магазин" Padding="5 10 0 5"></TextBlock>
+            <ComboBox x:Name="shopBox" DisplayMemberPath="Name" SelectedValuePath="Id" />
+
+            <TextBlock x:Name="typeUniqueAtribute" Text="Код" Padding="5 10 0 5"></TextBlock>
+            <TextBox x:Name="uniqueAtributeValue" ></TextBox>
+        </StackPanel>
+    </Grid>
+</ContentDialog>

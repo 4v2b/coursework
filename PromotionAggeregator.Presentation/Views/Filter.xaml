@@ -1,0 +1,60 @@
+﻿<UserControl
+    x:Class="PromotionAggeregator.Presentation.Views.Filter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PromotionAggeregator.Presentation.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+   Height="{Binding ActualHeight, ElementName=myGrid}"
+             Width="{Binding ActualWidth, ElementName=myGrid}">
+
+    <Grid x:Name="myGrid" Background="White" Padding="20">
+        <StackPanel>
+            <Grid x:Name="type"  Tapped="Tap" Padding="10">
+                <SymbolIcon x:Name="symbol1" Symbol="Add" HorizontalAlignment="Left"/>
+                <TextBlock Text="Тип пропозиції" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            </Grid>
+               
+            <StackPanel Padding="20 0 0 0" Name="checkBoxes1" Visibility="Collapsed">
+                <RadioButton GroupName="type" Content="Акція" />
+                <RadioButton GroupName="type" Content="Промокод" />
+                <RadioButton GroupName="type" Content="Усі" />
+            </StackPanel>
+
+            <Grid x:Name="period" Tapped="Tap" Padding="10" >
+                <SymbolIcon x:Name="symbol2" Symbol="Add" HorizontalAlignment="Left"/>
+                <TextBlock Text="Період" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            </Grid>
+
+            <StackPanel Padding="20 0 0 0" Name="checkBoxes2" Visibility="Visible">
+                <RadioButton GroupName="type" Content="1 день" FontSize="14" ExitDisplayModeOnAccessKeyInvoked="False" Height="32" />
+                <RadioButton GroupName="type" Content="7 днів" />
+                <RadioButton GroupName="type" Content="Місяць" />
+                <RadioButton GroupName="type" Content="Усі" />
+            </StackPanel>
+
+            <Grid x:Name="rating" Tapped="Tap" Padding="10" >
+                <SymbolIcon x:Name="symbol3" Symbol="Add" HorizontalAlignment="Left"/>
+                <TextBlock Text="Період" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            </Grid>
+
+            <StackPanel Padding="20 0 0 0" Name="checkBoxes3" Visibility="Collapsed">
+                <RadioButton GroupName="type" Content="1 день" />
+                <RadioButton GroupName="type" Content="7 днів" />
+                <RadioButton GroupName="type" Content="Місяць" />
+                <RadioButton GroupName="type" Content="Усі" />
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button HorizontalAlignment="Center" Grid.Column="0" Content="Скинути" Click="ResetClick"></Button>
+
+                <Button HorizontalAlignment="Center" Grid.Column="1" Content="Фільтрувати" Click="FilterClick"></Button>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -10,17 +10,25 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="56*"/>
-            <ColumnDefinition Width="85*"/>
-            <ColumnDefinition Width="102*"/>
-            <ColumnDefinition Width="85*"/>
-            <ColumnDefinition Width="56*"/>
+            <ColumnDefinition Width="280*"/>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="1010*"/>
+            <ColumnDefinition Width="174*"/>
+            <ColumnDefinition Width="280*"/>
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Column="2" x:Name="email" Margin="0 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="TextBox"  Height="30"/>
-        <PasswordBox Grid.Column="2" x:Name="password" Margin="0 0 0 50" HorizontalAlignment="Center" VerticalAlignment="Center" Width="115" Height="32"/>
-        <PasswordBox Grid.Column="2" x:Name="repeatPassword" Margin="0 0 0 100" HorizontalAlignment="Center" VerticalAlignment="Center" Width="113" Height="32"/>
-        <TextBlock Grid.Column="2" x:Name="message" Margin="0 0 0 150" HorizontalAlignment="Center" VerticalAlignment="Center" Text="" Height="19"></TextBlock>
-        <Button Grid.Column="2" x:Name="confirm" Margin="0 0 0 200" Content="Зареєструватися" HorizontalAlignment="Center" VerticalAlignment="Center" Click="confirm_Click" Height="33"/>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="24*"/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="2" Grid.Column="2" x:Name="email" HorizontalAlignment="Center" VerticalAlignment="Top" Text="TextBox"  Height="30" Width="67"/>
+        <PasswordBox Grid.Row="2" Grid.Column="2" x:Name="password" Margin="0,50,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="115" Height="32"/>
+        <PasswordBox Grid.Row="2" Grid.Column="2" x:Name="repeatPassword" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="113" Height="32"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" x:Name="message" Margin="0,150,0,0" TextWrapping="WrapWholeWords" HorizontalAlignment="Center" VerticalAlignment="Top" Text="" Height="19" Width="50"></TextBlock>
+        <Button Grid.Row="2" Grid.Column="2" x:Name="confirm" Margin="0,200,0,0" Content="Зареєструватися" HorizontalAlignment="Center" VerticalAlignment="Top" Click="confirm_Click" Height="33" Width="127"/>
 
     </Grid>
 </Page>

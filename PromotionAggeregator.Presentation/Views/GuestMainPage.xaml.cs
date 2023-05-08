@@ -19,56 +19,22 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace PromotionAggeregator.Presentation.Views
 {
     public sealed partial class GuestMainPage : Page
     {
-        private IdentityUser manager;
-        private TextBlock resultIndicator;
-
         public GuestMainPage()
-        {       
+        {
             this.InitializeComponent();
-            searchField.OnSearchClick += Search;
-            manager = new IdentityUser();
-            listView.ItemsSource = Init.Convert(Context.Instance.Promotions);
-            manager.Notify += ShowCount;
+            ArrayList list = Init.Convert(Context.Instance.Promotions);
+            Init.BindClick(PromotionTap, list);
+            listView.ItemsSource = list;
         }
 
-        private void Search(object sender, RoutedEventArgs e)
+        private void Search(object sender, ArrayList e)
         {
-
-            if (!string.IsNullOrEmpty(searchField.Text))
-            {
-                ArrayList array = new ArrayList();
-                List<PromotionModel> list = Init.Convert(manager.Search(searchField.Text));
-                array.Add(resultIndicator);
-                array.AddRange(list);
-                listView.ItemsSource = array;
-            }
-            else listView.ItemsSource = Init.Convert(Context.Instance.Promotions);
-          
-        }
-
-        private void ShowCount(int count)
-        {
-            resultIndicator = new TextBlock();
-            resultIndicator.FontWeight = Windows.UI.Text.FontWeights.Bold;
-            string text = string.Empty;
-            resultIndicator.TextAlignment = TextAlignment.Left;
-            if (count != 0)
-            {
-                resultIndicator.FontSize = 16;
-                text = $"\nЗнайдено результатів: {count}\n";
-            }
-            else
-            {
-                resultIndicator.FontSize = 20;
-                text = "\nРезультатів не знайдено\n";
-            }
-           resultIndicator.Text = text;
+            Init.BindClick(PromotionTap, e);
+            listView.ItemsSource = e;
         }
 
         private void SignInClick(object sender, RoutedEventArgs e)
@@ -79,7 +45,22 @@ namespace PromotionAggeregator.Presentation.Views
         private void RegisterClick(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(RegistrationPage));
-
         }
+
+        private void PromotionTap(object sender, Promotion promotion)
+        {
+            Frame.Navigate(typeof(PromotionGuestView), promotion);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is ArrayList)
+            {
+                Init.BindClick(PromotionTap, (ArrayList)e.Parameter);
+                listView.ItemsSource = e.Parameter;
+            }
+            base.OnNavigatedTo(e);
+        }
+
     }
 }

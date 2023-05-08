@@ -1,4 +1,5 @@
-﻿using PromotionAggregator.Logic.Context;
+﻿using PromotionAggeregator.Presentation.Views;
+using PromotionAggregator.Logic.Context;
 using PromotionAggregator.Logic.Models;
 using System;
 using System.Collections.Generic;
@@ -21,16 +22,30 @@ namespace PromotionAggeregator.Presentation.ViewModels
 {
     public sealed partial class PromotionModel : UserControl
     {
-        List<Promotion> promotions;
+        private Promotion promotion;
+
+        public Promotion Promotion
+        {
+            get => promotion;
+            set
+            {
+                promotion = value;
+                title.Text = promotion.Title;
+                description.Text = promotion.Description;
+            }
+        }
+
+        public event EventHandler<Promotion> OnPromotionClick;
+
+
         public PromotionModel()
         {
             this.InitializeComponent();
-            promotions = Context.Instance.Promotions;
         }
 
-        public string Description { get => description.Text; set => description.Text = value; }
-
-        public string Title { get => title.Text; set => title.Text = value; }
-
+        public void PromotionTapped(object sender, TappedRoutedEventArgs e)
+        {
+            OnPromotionClick?.Invoke(this, Promotion);
+        }
     }
 }

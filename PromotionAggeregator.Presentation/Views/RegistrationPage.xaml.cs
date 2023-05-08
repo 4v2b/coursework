@@ -30,21 +30,22 @@ namespace PromotionAggeregator.Presentation.Views
             this.InitializeComponent();
         }
 
-        private async void confirm_Click(object sender, RoutedEventArgs e)
+        private void confirm_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Authentication.Register(email.Text, password.Password, repeatPassword.Password);
+                User user = Authentication.Register(email.Text, password.Password, repeatPassword.Password);
                 Context.Instance.SaveAll();
-                Frame.Navigate(typeof(UserMainPage));
+
+               if (user is AuthorisedUser)
+                {
+                    Frame.Navigate(typeof(UserMainPage), user);
+                }
+                else Frame.Navigate(typeof(AdminMainPage), user);
             }
-            catch(ArgumentException ex)
+            catch(Exception ex)
             {
                 message.Text = ex.Message;
-            }
-            catch
-            {
-
             }
         }
     }

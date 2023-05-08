@@ -41,7 +41,7 @@ namespace PromotionAggregator.Logic.Services
                 }
                 catch
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Невірний формат електронної пошти");
                 }
                 email = value;
             }
@@ -59,7 +59,7 @@ namespace PromotionAggregator.Logic.Services
                     && value?.Length > 7 
                     && value.IndexOf(' ') == -1)
                         password = HashPassword(value);
-                else throw new ArgumentException();
+                else throw new ArgumentException("Пароль має бути довжиною щонайменше 8 символів і не містити пробіли");
             }
             get => password;
         }

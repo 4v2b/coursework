@@ -1,5 +1,10 @@
-﻿using PromotionAggregator.Logic.Models;
+﻿using PromotionAggeregator.Presentation.Services;
+using PromotionAggeregator.Presentation.ViewModels;
+using PromotionAggregator.Logic.Context;
+using PromotionAggregator.Logic.Models;
+using PromotionAggregator.Logic.Services;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,22 +25,36 @@ namespace PromotionAggeregator.Presentation.Views
 {
     public sealed partial class SearchField : UserControl
     {
+        private TextBlock resultIndicator;
+
+        public IdentityUser Identity { get; set; }
+
         public SearchField()
         {
             this.InitializeComponent();
+            Identity = new IdentityUser();
+            Identity.Notify += ShowCount;
         }
 
-        public string Text { get => searchField.Text; }
+        private void ShowCount(int count)
+        {
+            resultIndicator = Init.GetMessageButton(count);
+        }
 
-        public event RoutedEventHandler OnSearchClick;
+        public event EventHandler<ArrayList> OnSearchClick;
 
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
-            if(this.OnSearchClick != null)
+            ArrayList arrayList = new ArrayList();
+            if (!string.IsNullOrEmpty(searchField.Text))
             {
-                this.OnSearchClick(sender, e);
-            }
+                ArrayList list = Init.Convert(Identity.Search(searchField.Text));
+                    arrayList.Add(resultIndicator);
+                    arrayList.AddRange(list);
 
+            }
+            else arrayList.AddRange(Init.Convert(Context.Instance.Promotions));
+            this.OnSearchClick?.Invoke(sender,arrayList);
         }
 
     }

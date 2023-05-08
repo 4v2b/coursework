@@ -101,5 +101,40 @@ namespace PromotionAggregator.Tests.Tests
 
         }
 
+        [TestMethod]
+        public void RatePromotion_returns_true_when_to_rate_Promotion_possible()
+        {
+            //Arrange
+            AuthorisedUser user = new AuthorisedUser("example@gmail.com", "12345678");
+            var promotions = Context.Instance.Promotions;
+            Promotion promotion = new SpecialOffer();
+            bool result;
+
+            //Act
+            promotions.Add(promotion);   
+            result = user.RatePromotion(promotion.Id, 5);
+
+            //Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void RatePromotion_returns_false_when_to_rate_Promotion_second_time()
+        {
+            //Arrange
+            AuthorisedUser user = new AuthorisedUser("example@gmail.com", "12345678");
+            var promotions = Context.Instance.Promotions;
+            Promotion promotion = new SpecialOffer();
+            bool result;
+
+            //Act
+            promotions.Add(promotion);
+            user.RatePromotion(promotion.Id, 5);
+            result = user.RatePromotion(promotion.Id, 5);
+
+            //Assert
+            Assert.IsTrue(result);
+        }
+
     }
 }

@@ -1,0 +1,87 @@
+﻿<Page
+    x:Class="PromotionAggeregator.Presentation.Views.PromotionAdminView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PromotionAggeregator.Presentation.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#EFF5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="90" Background="AliceBlue" VerticalAlignment="Center" BorderThickness="0,0,0,3">
+            <Grid.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.BorderBrush>
+            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0" OnSearchClick="Search"/>
+            <Button Content="Вийти" VerticalAlignment="Center" Click="logout_Click" HorizontalAlignment="Right" Margin="0,0,30,0"/>
+
+        </Grid>
+        <ScrollViewer Grid.Row="1" Grid.RowSpan="11" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+            <Grid Background="#EFF5F5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Grid.ColumnSpan="12">
+                    <TextBlock Text="Коментарі" FontSize="32" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
+
+                    <ListView x:Name="comments" ItemsSource="{x:Bind Promotion.Comments}"  Width="400" HorizontalAlignment="Center">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="20">
+                                    <TextBlock x:Name="userId" Text="{Binding UserId}"/>
+                                    <TextBlock Text="{Binding Text}"/>
+                                    <TextBlock Text="{Binding PublicationDate}"/>
+                                    <Button x:Name="deleteButton">
+                                        <Button.Flyout>
+                                            <Flyout x:Name="commentFlyout">
+                                                <Flyout.Content>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Видалити" />
+                                                        <Button Click="DeleteClick" CommandParameter="{Binding UserId}" Content="Так" Margin="0 10 0 0" />
+                                                        <Button Click="HideClick" CommandParameter="{Binding ElementName=commentFlyout}" Content="Ні" Margin="0 10 0 0" />
+                                                    </StackPanel>
+                                                </Flyout.Content>
+                                            </Flyout>
+                                        </Button.Flyout>
+                                        <SymbolIcon Symbol="More"/>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
+            </Grid>
+
+        </ScrollViewer>
+    </Grid>
+</Page>

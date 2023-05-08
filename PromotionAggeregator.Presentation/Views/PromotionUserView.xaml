@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="PromotionAggeregator.Presentation.Views.PromotionView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PromotionAggeregator.Presentation.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <ScrollViewer Grid.Row="1" Grid.RowSpan="11" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+            <Grid Background="#EFF5F5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Grid.ColumnSpan="12">
+                    <TextBlock Text="Коментарі" FontSize="32" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Напишіть ваш коментар:"/>
+                    <TextBox x:Name="commentField" Grid.Column="4" Grid.ColumnSpan="4" Height="100"/>
+                    <Button Content="Опублікувати" Click="PublicateClick" />
+                    <ListView x:Name="comments" ItemsSource="{x:Bind Promotion.Comments}"  Width="400" HorizontalAlignment="Center">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="20">
+                                    <TextBlock Text="{Binding UserId}"/>
+                                    <TextBlock Text="{Binding Text}"/>
+                                    <TextBlock Text="{Binding PublicationDate}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
+            </Grid>
+
+        </ScrollViewer>
+    </Grid>
+</Page>

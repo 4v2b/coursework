@@ -8,8 +8,48 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Button x:Name="logout" Content="Button" Margin="573,240,0,0" VerticalAlignment="Top" Click="logout_Click" Height="235" Width="387"/>
-
+    <Grid Background="#EFF5F5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="12" Height="90" Background="AliceBlue" VerticalAlignment="Center" BorderThickness="0,0,0,3">
+            <Grid.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.BorderBrush>
+            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0"/>
+            <Button Content="Вийти" VerticalAlignment="Center" Click="logout_Click" HorizontalAlignment="Right" Margin="0,0,30,0"/>
+            <Button Content="Бажане" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0"/>
+            <Button Content="+" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,200,0" Click="Button_Click"/>
+        </Grid>
+        <ListView HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="11" Grid.Column="0" Grid.ColumnSpan="12" x:Name="listView" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionMode="None" HorizontalContentAlignment="Stretch">
+        </ListView>
     </Grid>
 </Page>

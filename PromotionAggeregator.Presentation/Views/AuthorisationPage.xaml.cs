@@ -31,11 +31,14 @@ namespace PromotionAggeregator.Presentation.Views
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                Authentication.SignIn(email.Text, password.Text);
-                Frame.Navigate(typeof(UserMainPage));
+                User user = Authentication.SignIn(email.Text, password.Text);
+                if (user is AuthorisedUser)
+                {
+                    Frame.Navigate(typeof(UserMainPage), user);
+                }
+                else Frame.Navigate(typeof(AdminMainPage), user);
             }
             catch
             {

@@ -5,12 +5,16 @@ using System.Collections.Generic;
 
 namespace PromotionAggregator.Logic.Services
 {
-    public class AuthorisedUser:User
+    public class AuthorisedUser : User
     {
-        public AuthorisedUser(string email, string password):
+        [JsonProperty]
+        private HashSet<string> RatedPromotions { get; set; }
+
+        public AuthorisedUser(string email, string password) :
             base(email, password)
         {
             Wishlist = new Wishlist();
+            RatedPromotions = new HashSet<string>();
         }
 
         public AuthorisedUser() : base() { }
@@ -26,9 +30,14 @@ namespace PromotionAggregator.Logic.Services
         {
             var comments = Context.Context.Instance.Promotions.Find(x => x.Id.Equals(promotionId))?.Comments;
             if (comments == null)
+            {
                 throw new ArgumentException();
+            }
             else
+            {
                 comments.Add(new Comment(text, DateTime.Now, Id));
+                RatedPromotions.Add(promotionId);
+            }
         }
 
         public void AddToWishlist(string promotionId)
@@ -41,6 +50,20 @@ namespace PromotionAggregator.Logic.Services
         public bool RemoveFromWishlist(string promotionId)
         {
             return Wishlist.Remove(promotionId);
+        }
+
+        public bool RatePromotion(string promotionId, double rating)
+        {
+            if (!RatedPromotions.Contains(promotionId))
+            {
+                var promotion = Context.Context.Instance.Promotions?.Find(x => x.Id.Equals(promotionId));
+                if (promotion != null)
+                {
+                    promotion.Rating = rating;
+                    return true;
+                }
+            }
+            return false;
         }
 
     }
