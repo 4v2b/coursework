@@ -123,10 +123,16 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Auth.cs" />
     <Compile Include="Services\Init.cs" />
+    <Compile Include="Services\Util.cs" />
     <Compile Include="Views\AddPromoCodeDialog.xaml.cs">
       <DependentUpon>AddPromoCodeDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddShopDialog.xaml.cs">
+      <DependentUpon>AddShopDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminControl.xaml.cs">
+      <DependentUpon>AdminControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminMainPage.xaml.cs">
       <DependentUpon>AdminMainPage.xaml</DependentUpon>
@@ -134,8 +140,14 @@
     <Compile Include="Views\AddPromotionDialog.xaml.cs">
       <DependentUpon>AddPromotionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminPromotionView.xaml.cs">
+      <DependentUpon>AdminPromotionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Filter.xaml.cs">
       <DependentUpon>Filter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PromotionAdminView.xaml.cs">
       <DependentUpon>PromotionAdminView.xaml</DependentUpon>
@@ -194,6 +206,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddShopDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AdminMainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,7 +222,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AdminPromotionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Filter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

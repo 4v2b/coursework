@@ -7,10 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="Додавання акційної пропозиції"
-    PrimaryButtonText="Відмінити"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonText="Підтвердити"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
     >
     <!--<ContentDialog.Resources>
         <x:Double x:Key="ContentDialogMaxWidth">1200</x:Double>
@@ -29,25 +25,48 @@
             <TextBlock Text="Кінцевий термін дії" Padding="5 10 0 5"></TextBlock>
             <DatePicker x:Name="datePick" />
 
+            <TextBlock Text="Категорії" Padding="5 10 0 5"></TextBlock>
+            <Button Content="Вибрати категорії">
+                <Button.Flyout>
+                    <Flyout>
+                        <ListView SelectionMode="None" x:Name="categoriesListView" ItemsSource="{x:Bind categoryMap}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox Content="{Binding Key}" Margin="5 0 0 0" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+
             <TextBlock Text="Магазин" Padding="5 10 0 5"></TextBlock>
             <ComboBox x:Name="shopBox" DisplayMemberPath="Name" SelectedValuePath="Id" />
 
             <TextBlock Text="Тип" Padding="5 10 0 5"></TextBlock>
             <Grid>
-                
-                    <Grid.ColumnDefinitions>
+
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <RadioButton x:Name="offerCheck" GroupName="type" Content="Акція" HorizontalAlignment="Center" Checked="offerCheck_Checked"/>
                 <RadioButton x:Name="codeCheck"  Grid.Column="1" GroupName="type" Content="Промокод" HorizontalAlignment="Center" Checked="codeCheck_Checked" />
-            
+
             </Grid>
 
             <TextBlock x:Name="typeUniqueAtribute" Text="" Padding="5 10 0 5"></TextBlock>
             <TextBox x:Name="uniqueAtributeValue" ></TextBox>
+            <TextBlock Visibility="Collapsed" x:Name="errorMessage" Padding="5 10 0 5" Foreground="Crimson"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Button Click="CancelButtonClick" Content="Відмінити" HorizontalAlignment="Left"/>
+                <Button Click="ConfirmButtonClick" Content="Підтвердити" HorizontalAlignment="Right"/>
+            </StackPanel>
+
         </StackPanel>
 
-       
+
     </Grid>
 </ContentDialog>

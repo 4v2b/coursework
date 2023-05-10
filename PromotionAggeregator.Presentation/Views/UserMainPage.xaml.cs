@@ -66,6 +66,11 @@ namespace PromotionAggeregator.Presentation.Views
             {
                 manager = new IdentityUser((AuthorisedUser)e.Parameter);
             }
+            if (e.Parameter is ArrayList)
+            {
+                Init.BindClick(PromotionTap, (ArrayList)e.Parameter);
+                listView.ItemsSource = e.Parameter;
+            }
             base.OnNavigatedTo(e);
         }
 
@@ -75,6 +80,7 @@ namespace PromotionAggeregator.Presentation.Views
             {
                 ((AuthorisedUser)manager.User).AddPromotion(p);
                 listView.ItemsSource = Init.Convert(Context.Instance.Promotions);
+                Context.Instance.SaveAll();
             }
             catch (Exception e)
             {
@@ -85,6 +91,7 @@ namespace PromotionAggeregator.Presentation.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             dialog = new AddPromoCodeDialog();
+            dialog.ShowAsync();
             dialog.PromoCodeConfirmed += AddPromoCode;
         }
     }

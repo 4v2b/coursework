@@ -89,6 +89,45 @@ namespace PromotionAggregator.Tests.Tests
             Assert.AreEqual(expected, actual);
         }
 
+
+        [TestMethod]
+        public void GetPromotionsOfShop_returns_empty_collection_when_no_one_promotion_match()
+        {
+            //Arrange
+            IdentityUser identity = new IdentityUser();
+            PromoСode promoСode = new PromoСode();
+            Context.Instance.Promotions.Clear();
+            new Admin().AddPromotion(promoСode);
+            int expected = 0;
+            string id = "id";
+
+            //Act
+            int actual = identity.GetPromotionsOfShop(id).Count;
+
+            //Act + Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GetPromotionsOfShop_returns_collection_when_match_found()
+        {
+            //Arrange
+            IdentityUser identity = new IdentityUser();
+            PromoСode promoСode = new PromoСode();
+            string id = "id";
+            promoСode.ShopId = id;
+            Context.Instance.Promotions.Clear();
+            new Admin().AddPromotion(promoСode);
+            int expected = 1;
+
+            //Act
+            int actual = identity.GetPromotionsOfShop(id).Count;
+
+            //Act + Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
         [TestMethod]
         public void Search_returns_empty_collection_when_no_one_promotion_match()
         {

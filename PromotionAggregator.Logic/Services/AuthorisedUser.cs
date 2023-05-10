@@ -42,7 +42,7 @@ namespace PromotionAggregator.Logic.Services
 
         public void AddToWishlist(string promotionId)
         {
-            if (string.IsNullOrEmpty(promotionId))
+            if (string.IsNullOrEmpty(promotionId) || Wishlist.Contains(promotionId))
                 throw new ArgumentException();
             Wishlist.Add(promotionId);
         }
@@ -64,6 +64,11 @@ namespace PromotionAggregator.Logic.Services
                 }
             }
             return false;
+        }
+
+        public bool WishlistContains(string promotionId)
+        {
+            return Wishlist.Contains(promotionId);
         }
 
     }

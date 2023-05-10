@@ -3,7 +3,7 @@ using System;
 
 namespace PromotionAggregator.Logic.Models
 {
-    public class Comment: IComparable<Comment>
+    public class Comment
     {
         [JsonProperty]
         private string text;
@@ -44,9 +44,5 @@ namespace PromotionAggregator.Logic.Models
             }
         }
 
-        public int CompareTo(Comment other)
-        {
-            return PublicationDate.CompareTo(other.PublicationDate);
-        }
     }
 }

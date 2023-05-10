@@ -76,19 +76,5 @@ namespace PromotionAggregator.Tests.Tests
             Assert.AreEqual(text, result);
         }
 
-        [TestMethod]
-        public void CompareTo_return_1_when_instanse_greater_than_parameter()
-        {
-            //Arrange
-            Comment comment1 = new Comment("text",DateTime.Now,"id");
-            Comment comment2 = new Comment("text", DateTime.Now.AddDays(1), "id");
-            int result;
-
-            //Act
-            result = comment2.CompareTo(comment1);
-
-            //Assert
-            Assert.AreEqual(1, result);
-        }
     }
 }

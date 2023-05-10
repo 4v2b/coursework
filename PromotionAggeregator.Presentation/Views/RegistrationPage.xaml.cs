@@ -1,6 +1,8 @@
-﻿using PromotionAggregator.Logic.Context;
+﻿using PromotionAggeregator.Presentation.Services;
+using PromotionAggregator.Logic.Context;
 using PromotionAggregator.Logic.Services;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,8 @@ namespace PromotionAggeregator.Presentation.Views
     /// </summary>
     public sealed partial class RegistrationPage : Page
     {
+        private Type prevPage;
+
         public RegistrationPage()
         {
             this.InitializeComponent();
@@ -36,17 +40,30 @@ namespace PromotionAggeregator.Presentation.Views
             {
                 User user = Authentication.Register(email.Text, password.Password, repeatPassword.Password);
                 Context.Instance.SaveAll();
-
-               if (user is AuthorisedUser)
+                errorMessage.Text = "";
+                if (user is AuthorisedUser)
                 {
                     Frame.Navigate(typeof(UserMainPage), user);
                 }
-                else Frame.Navigate(typeof(AdminMainPage), user);
+                else
+                {
+                    Frame.Navigate(typeof(AdminMainPage), user);
+                }
             }
             catch(Exception ex)
             {
-                message.Text = ex.Message;
+                if(ex.Message.Length > 50)
+                {
+                    //ex.Message.
+                }
+                errorMessage.Text = ex.Message;
             }
+        }
+
+
+        private void cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(GuestMainPage));
         }
     }
 }

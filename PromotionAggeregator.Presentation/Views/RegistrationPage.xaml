@@ -7,28 +7,25 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="280*"/>
-            <ColumnDefinition Width="175*"/>
-            <ColumnDefinition Width="1010*"/>
-            <ColumnDefinition Width="174*"/>
-            <ColumnDefinition Width="280*"/>
-        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="stackPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20">
+            <TextBlock Text="Ел. пошта" Padding="5"/>
+            <TextBox Width="{Binding ElementName=stackPanel}" Margin="5 0 5 5" x:Name="email" HorizontalAlignment="Stretch"/>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="24*"/>
-            <RowDefinition Height="24*"/>
-            <RowDefinition Height="37*"/>
-            <RowDefinition Height="11*"/>
-            <RowDefinition Height="24*"/>
-        </Grid.RowDefinitions>
-        <TextBox Grid.Row="2" Grid.Column="2" x:Name="email" HorizontalAlignment="Center" VerticalAlignment="Top" Text="TextBox"  Height="30" Width="67"/>
-        <PasswordBox Grid.Row="2" Grid.Column="2" x:Name="password" Margin="0,50,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="115" Height="32"/>
-        <PasswordBox Grid.Row="2" Grid.Column="2" x:Name="repeatPassword" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="113" Height="32"/>
-        <TextBlock Grid.Row="2" Grid.Column="2" x:Name="message" Margin="0,150,0,0" TextWrapping="WrapWholeWords" HorizontalAlignment="Center" VerticalAlignment="Top" Text="" Height="19" Width="50"></TextBlock>
-        <Button Grid.Row="2" Grid.Column="2" x:Name="confirm" Margin="0,200,0,0" Content="Зареєструватися" HorizontalAlignment="Center" VerticalAlignment="Top" Click="confirm_Click" Height="33" Width="127"/>
+            <TextBlock Text="Пароль" Padding="5"/>
 
+            <PasswordBox x:Name="password" Width="{Binding ElementName=stackPanel}" Margin="5 0 5 5"/>
+
+            <TextBlock Text="Повторіть пароль" Padding="5"/>
+
+            <PasswordBox x:Name="repeatPassword" Width="{Binding ElementName=stackPanel}" Margin="5 0 5 5"/>
+
+            <TextBlock MaxWidth="{Binding ElementName=stackPanel}" x:Name="errorMessage" Foreground="Crimson"  TextWrapping="WrapWholeWords" HorizontalAlignment="Center" Text=""></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="cancel" Margin="10" Content="Відміна" HorizontalAlignment="Center" VerticalAlignment="Center" Click="cancel_Click" Height="33" Width="127"/>
+
+                <Button x:Name="confirm" Margin="10" Content="Зареєструватися" HorizontalAlignment="Center" VerticalAlignment="Center" Click="confirm_Click" Height="33" Width="127"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

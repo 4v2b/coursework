@@ -25,37 +25,27 @@ namespace PromotionAggeregator.Presentation.Views
 {
     public sealed partial class SearchField : UserControl
     {
-        private TextBlock resultIndicator;
+        private Dictionary<string, Category> categories;
 
         public IdentityUser Identity { get; set; }
 
         public SearchField()
         {
+            categories = Util.CategoryMap;
             this.InitializeComponent();
-            Identity = new IdentityUser();
-            Identity.Notify += ShowCount;
         }
 
-        private void ShowCount(int count)
-        {
-            resultIndicator = Init.GetMessageButton(count);
-        }
-
-        public event EventHandler<ArrayList> OnSearchClick;
+        public event EventHandler<List<Promotion>> OnSearchClick;
 
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
-            ArrayList arrayList = new ArrayList();
-            if (!string.IsNullOrEmpty(searchField.Text))
-            {
-                ArrayList list = Init.Convert(Identity.Search(searchField.Text));
-                    arrayList.Add(resultIndicator);
-                    arrayList.AddRange(list);
-
-            }
-            else arrayList.AddRange(Init.Convert(Context.Instance.Promotions));
-            this.OnSearchClick?.Invoke(sender,arrayList);
+            this.OnSearchClick?.Invoke(sender, Identity.Search(searchField.Text));
         }
 
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var pair = (KeyValuePair<string, Category>)e.ClickedItem;
+            this.OnSearchClick?.Invoke(sender, Identity.GetPromotionsInCategory(pair.Value));
+        }
     }
 }

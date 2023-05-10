@@ -48,7 +48,7 @@ namespace PromotionAggeregator.Presentation.Views
             Frame.Navigate(typeof(AuthorisationPage));
         }
 
-        private void Search(object sender, ArrayList e) => Frame.Navigate(typeof(AdminMainPage), e);
+        private void Search(object sender, ArrayList e) => Frame.Navigate(typeof(GuestMainPage), e);
 
         private void DeleteClick(object sender, RoutedEventArgs e)
         {

@@ -10,51 +10,52 @@
              Width="{Binding ActualWidth, ElementName=myGrid}">
 
     <Grid x:Name="myGrid" Background="White" Padding="20">
-        <StackPanel>
-            <Grid x:Name="type"  Tapped="Tap" Padding="10">
-                <SymbolIcon x:Name="symbol1" Symbol="Add" HorizontalAlignment="Left"/>
-                <TextBlock Text="Тип пропозиції" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-            </Grid>
-               
-            <StackPanel Padding="20 0 0 0" Name="checkBoxes1" Visibility="Collapsed">
-                <RadioButton GroupName="type" Content="Акція" />
-                <RadioButton GroupName="type" Content="Промокод" />
-                <RadioButton GroupName="type" Content="Усі" />
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <Grid x:Name="type"  Tapped="Tap" Padding="10">
+                    <SymbolIcon x:Name="symbol1" Symbol="Add" HorizontalAlignment="Left"/>
+                    <TextBlock Text="Тип пропозиції" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                </Grid>
+
+                <StackPanel Padding="20 0 0 0" Name="checkBoxes1" Visibility="Collapsed">
+                    <RadioButton GroupName="typeGroup" Tag="2" Content="Акція" Checked="RadioButton_Checked" />
+                    <RadioButton GroupName="typeGroup" Tag="1" Content="Промокод" Checked="RadioButton_Checked"/>
+                    <RadioButton GroupName="typeGroup" Tag="0" Content="Усі" Checked="RadioButton_Checked"/>
+                </StackPanel>
+
+                <Grid x:Name="period" Tapped="Tap" Padding="10" >
+                    <SymbolIcon x:Name="symbol2" Symbol="Add" HorizontalAlignment="Left"/>
+                    <TextBlock Text="Період" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                </Grid>
+
+                <StackPanel Padding="20 0 0 0" Name="checkBoxes2" Visibility="Collapsed">
+                    <RadioButton Checked="RadioButton_Checked" GroupName="periodGroup" Tag="1" Content="1 день" FontSize="14" ExitDisplayModeOnAccessKeyInvoked="False" Height="32" />
+                    <RadioButton Checked="RadioButton_Checked" GroupName="periodGroup" Tag="7" Content="7 днів" />
+                    <RadioButton Checked="RadioButton_Checked" GroupName="periodGroup" Tag="30" Content="30 днів" />
+                    <RadioButton Checked="RadioButton_Checked" GroupName="periodGroup" Tag="0" Content="Усі" />
+                </StackPanel>
+
+                <Grid x:Name="rating" Tapped="Tap" Padding="10" >
+                    <SymbolIcon x:Name="symbol3" Symbol="Add" HorizontalAlignment="Left"/>
+                    <TextBlock Text="Рейтинг" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                </Grid>
+
+                <StackPanel Padding="20 0 0 0" Name="checkBoxes3" Visibility="Collapsed">
+                    <RadioButton Checked="RadioButton_Checked" GroupName="ratingGroup" Tag="4" Content="4 та більше " />
+                    <RadioButton Checked="RadioButton_Checked" GroupName="ratingGroup" Tag="3" Content="3 та більше" />
+                    <RadioButton Checked="RadioButton_Checked" GroupName="ratingGroup" Tag="-1" Content="Будь-який" />
+                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button HorizontalAlignment="Center" Grid.Column="0" Content="Скинути" Click="ResetClick"></Button>
+
+                    <Button HorizontalAlignment="Center" Grid.Column="1" Content="Фільтрувати" Click="FilterClick"></Button>
+
+                </Grid>
             </StackPanel>
-
-            <Grid x:Name="period" Tapped="Tap" Padding="10" >
-                <SymbolIcon x:Name="symbol2" Symbol="Add" HorizontalAlignment="Left"/>
-                <TextBlock Text="Період" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-            </Grid>
-
-            <StackPanel Padding="20 0 0 0" Name="checkBoxes2" Visibility="Visible">
-                <RadioButton GroupName="type" Content="1 день" FontSize="14" ExitDisplayModeOnAccessKeyInvoked="False" Height="32" />
-                <RadioButton GroupName="type" Content="7 днів" />
-                <RadioButton GroupName="type" Content="Місяць" />
-                <RadioButton GroupName="type" Content="Усі" />
-            </StackPanel>
-
-            <Grid x:Name="rating" Tapped="Tap" Padding="10" >
-                <SymbolIcon x:Name="symbol3" Symbol="Add" HorizontalAlignment="Left"/>
-                <TextBlock Text="Період" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-            </Grid>
-
-            <StackPanel Padding="20 0 0 0" Name="checkBoxes3" Visibility="Collapsed">
-                <RadioButton GroupName="type" Content="1 день" />
-                <RadioButton GroupName="type" Content="7 днів" />
-                <RadioButton GroupName="type" Content="Місяць" />
-                <RadioButton GroupName="type" Content="Усі" />
-            </StackPanel>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button HorizontalAlignment="Center" Grid.Column="0" Content="Скинути" Click="ResetClick"></Button>
-
-                <Button HorizontalAlignment="Center" Grid.Column="1" Content="Фільтрувати" Click="FilterClick"></Button>
-
-            </Grid>
-        </StackPanel>
+        </ScrollViewer> 
     </Grid>
 </UserControl>

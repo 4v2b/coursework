@@ -31,7 +31,7 @@
                     <GradientStop Color="#FFEBEBEB" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.BorderBrush>
-            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0" OnSearchClick="Search"/>
+            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0"/>
             <Button Content="Увійти" VerticalAlignment="Center" Click="SignInClick" HorizontalAlignment="Right" Margin="0,0,30,0"/>
             <Button Content="Зареєструватися" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,120,0" Click="RegisterClick"/>
         </Grid>
@@ -61,13 +61,12 @@
                                     <TextBlock Text="{Binding Text}"/>
                                     <TextBlock Text="{Binding PublicationDate}"/>
                                 </StackPanel>
-                    </DataTemplate>
-                            </ListView.ItemTemplate>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                     </ListView>
                 </StackPanel>
-               
             </Grid>
-            
+
         </ScrollViewer>
     </Grid>
 </Page>

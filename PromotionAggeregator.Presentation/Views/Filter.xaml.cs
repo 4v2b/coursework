@@ -1,5 +1,6 @@
 ﻿using PromotionAggregator.Logic.Context;
 using PromotionAggregator.Logic.Models;
+using PromotionAggregator.Logic.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +22,13 @@ namespace PromotionAggeregator.Presentation.Views
 {
     public sealed partial class Filter : UserControl
     {
+        private FilterMode _mode = FilterMode.None;
+        private int _period = 0;
+        private int _rating = -1;
+
+
+        public IdentityUser IdentityUser { get; set; }
+
         public Filter()
         {
             this.InitializeComponent();
@@ -36,7 +44,7 @@ namespace PromotionAggeregator.Presentation.Views
 
         private void FilterClick(object sender, RoutedEventArgs e)
         {
-            List<Promotion> list = new List<Promotion>();
+            List<Promotion> list = IdentityUser.Filter(_mode, _rating, _period);
             OnFilterClick?.Invoke(sender, list);
         }
 
@@ -76,5 +84,21 @@ namespace PromotionAggeregator.Presentation.Views
             }
         }
 
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            var radio = (sender as RadioButton);
+            if(radio.GroupName == "typeGroup")
+            {
+                _mode = Enum.Parse<FilterMode>(radio.Tag as string);
+            }
+            else if(radio.GroupName == "periodGroup")
+            {
+                _period = int.Parse(radio.Tag as string);
+            }
+            else if(radio.GroupName == "ratingGroup")
+            {
+                _rating = int.Parse(radio.Tag as string);
+            }
+        }
     }
 }

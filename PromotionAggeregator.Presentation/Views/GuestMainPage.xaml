@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PromotionAggeregator.Presentation.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:logic11="using:PromotionAggregator.Logic.Models"
     mc:Ignorable="d"
     Background="#EFF5F5">
 
@@ -44,12 +44,11 @@
                     <GradientStop Color="#FFEBEBEB" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.BorderBrush>
-            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0" OnSearchClick="Search"/>
+            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0"/>
             <Button Content="Увійти" VerticalAlignment="Center" Click="SignInClick" HorizontalAlignment="Right" Margin="0,0,30,0"/>
             <Button Content="Зареєструватися" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,120,0" Click="RegisterClick"/>
         </Grid>
-        <ListView HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="11" Grid.Column="3" Grid.ColumnSpan="6" x:Name="listView" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionMode="None" HorizontalContentAlignment="Stretch"/>
-        <local:Filter Margin="100" VerticalAlignment="Top" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" Grid.RowSpan="9" />
+        <local:MainView HorizontalAlignment="Stretch" x:Name="view" Grid.Column="0" Grid.ColumnSpan="12" Grid.Row="1" Grid.RowSpan="11"/>
 
     </Grid>
 </Page>

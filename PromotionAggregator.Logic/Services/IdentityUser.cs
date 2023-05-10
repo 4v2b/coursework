@@ -78,8 +78,19 @@ namespace PromotionAggregator.Logic.Services
             List<Promotion> promotions = Context.Context.Instance.Promotions;
             var list = from p in promotions 
                        where p.Categories.Contains(category) 
-                       orderby p.AddingDate 
                        orderby p.Rating 
+                       select p;
+            Notify?.Invoke(list.Count());
+            return list.ToList<Promotion>();
+        }
+
+        public List<Promotion> GetPromotionsOfShop(string shopId)
+        {
+            List<Promotion> promotions = Context.Context.Instance.Promotions;
+            var list = from p in promotions
+                       where p.ShopId.Equals(shopId)
+                       orderby p
+                       orderby p.Rating
                        select p;
             Notify?.Invoke(list.Count());
             return list.ToList<Promotion>();

@@ -69,6 +69,11 @@ namespace PromotionAggeregator.Presentation.Views
             {
                 manager = new IdentityUser((Admin)e.Parameter);
             }
+            if (e.Parameter is ArrayList)
+            {
+                Init.BindClick(PromotionTap, (ArrayList)e.Parameter);
+                listView.ItemsSource = e.Parameter;
+            }
             base.OnNavigatedTo(e);
         }
 
@@ -90,6 +95,11 @@ namespace PromotionAggeregator.Presentation.Views
             dialog = new AddPromotionDialog();
             dialog.PromotionConfirmed += GetPromotion;
             await dialog.ShowAsync();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AdminControl), manager.User);
         }
     }
 }

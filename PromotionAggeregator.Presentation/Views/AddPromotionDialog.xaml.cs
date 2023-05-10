@@ -1,4 +1,5 @@
-﻿using PromotionAggregator.Logic.Context;
+﻿using PromotionAggeregator.Presentation.Services;
+using PromotionAggregator.Logic.Context;
 using PromotionAggregator.Logic.Models;
 using System;
 using System.Collections.Generic;
@@ -25,33 +26,34 @@ namespace PromotionAggeregator.Presentation.Views
     {
         private Promotion promotion;
 
+        private Dictionary<string, Category> categoryMap;
+
+        private List<Category> selectedCategories;
+
         public AddPromotionDialog()
         {
+            categoryMap = Util.CategoryMap;
             this.InitializeComponent();
             offerCheck.IsChecked = true;
             shopBox.ItemsSource = Context.Instance.Shops;
+            selectedCategories = new List<Category>();
         }
 
         public event EventHandler<Promotion> PromotionConfirmed;
 
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private void CancelButtonClick(object sender, RoutedEventArgs e)
         {
             this.Hide();
         }
 
-        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-            PromotionConfirmed(this, getNewPromotion().Result);
-        }
-
-        private async Task<Promotion> getNewPromotion()
+        private void ConfirmButtonClick(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (offerCheck.IsChecked.GetValueOrDefault(false))
                 {
                     promotion = new SpecialOffer();
-                     ((SpecialOffer)promotion).Url = uniqueAtributeValue.Text;
+                    ((SpecialOffer)promotion).Url = uniqueAtributeValue.Text;
                 }
                 else if (codeCheck.IsChecked.GetValueOrDefault(false))
                 {
@@ -61,15 +63,27 @@ namespace PromotionAggeregator.Presentation.Views
                 promotion.Title = titleBox.Text;
                 promotion.Description = descBox.Text;
                 promotion.EndDate = datePick.Date.DateTime;
+
+                if (selectedCategories.Count < 1)
+                {
+                    throw new Exception("Необхідно обрати щонайменше\nодну категорію");
+                }
+                else
+                {
+                    foreach (Category c in selectedCategories)
+                    {
+                        promotion.Categories.Add(c);
+                    }
+                }
                 promotion.ShopId = (string)shopBox.SelectedValue;
-                return promotion;
+                PromotionConfirmed(this, promotion);
+                this.Hide();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                await new MessageDialog(ex.Message).ShowAsync();
-                return null;
+                errorMessage.Visibility = Visibility.Visible;
+                errorMessage.Text = ex.Message;
             }
-            
         }
 
         private void offerCheck_Checked(object sender, RoutedEventArgs e)
@@ -80,6 +94,16 @@ namespace PromotionAggeregator.Presentation.Views
         private void codeCheck_Checked(object sender, RoutedEventArgs e)
         {
             typeUniqueAtribute.Text = "Промокод";
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            selectedCategories.Add((Category)(sender as CheckBox).CommandParameter);
+        }
+
+        private void UncheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            selectedCategories.Remove((Category)(sender as CheckBox).CommandParameter);
         }
     }
 }

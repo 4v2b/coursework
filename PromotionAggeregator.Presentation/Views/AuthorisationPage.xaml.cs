@@ -29,21 +29,26 @@ namespace PromotionAggeregator.Presentation.Views
             this.InitializeComponent();
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                User user = Authentication.SignIn(email.Text, password.Text);
+                User user = Authentication.SignIn(email.Text, password.Password);
                 if (user is AuthorisedUser)
                 {
                     Frame.Navigate(typeof(UserMainPage), user);
                 }
                 else Frame.Navigate(typeof(AdminMainPage), user);
             }
-            catch
+            catch(Exception ex)
             {
-                await new MessageDialog("Something went wrong").ShowAsync();
+                errorMessage.Text = ex.Message;
             }
+        }
+
+        private void cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(GuestMainPage));
         }
     }
 }

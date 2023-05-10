@@ -26,23 +26,36 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Grid.ColumnSpan="12">
-                    <TextBlock Text="Коментарі" FontSize="32" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Напишіть ваш коментар:"/>
-                    <TextBox x:Name="commentField" Grid.Column="4" Grid.ColumnSpan="4" Height="100"/>
-                    <Button Content="Опублікувати" Click="PublicateClick" />
-                    <ListView x:Name="comments" ItemsSource="{x:Bind Promotion.Comments}"  Width="400" HorizontalAlignment="Center">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="20">
-                                    <TextBlock Text="{Binding UserId}"/>
-                                    <TextBlock Text="{Binding Text}"/>
-                                    <TextBlock Text="{Binding PublicationDate}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <StackPanel Orientation="Horizontal" DataContext="{x:Bind Promotion}">
+                        <TextBlock x:Name="promoType"/>
+                        <TextBlock x:Name="globalRating" Text="{Binding Rating}"/>
+                        <Button x:Name="action">
+                            <StackPanel Orientation="Horizontal">
+                                
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="wishBtn" Click="AddWish" Foreground="Black" Background="{x:Null}" BorderThickness="0,0,0,0" FontStyle="Normal" FontSize="14">
+                            <FontIcon x:Name="wishIcon" FontFamily="Segoe MDL2 Assets" Glyph="&#xEB51;"/>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="4" Grid.ColumnSpan="4">
+                        <TextBlock Text="Коментарі" FontSize="32" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Напишіть ваш коментар:"/>
+                        <TextBox x:Name="commentField" Grid.Column="4" Grid.ColumnSpan="4" Height="100"/>
+                        <Button Content="Опублікувати" Click="PublicateClick" />
+                        <ListView x:Name="comments" ItemsSource="{x:Bind Promotion.Comments}"  Width="400" HorizontalAlignment="Center">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="20">
+                                        <TextBlock Text="{Binding UserId}"/>
+                                        <TextBlock Text="{Binding Text}"/>
+                                        <TextBlock Text="{Binding PublicationDate}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
                 </StackPanel>
-
             </Grid>
 
         </ScrollViewer>

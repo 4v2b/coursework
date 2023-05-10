@@ -7,10 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="Додати промокод"
-    PrimaryButtonText="Відмінити"
-    SecondaryButtonText="ПІдтвердити"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+>
 
     <Grid>
         <StackPanel>
@@ -19,12 +16,42 @@
 
             <TextBlock Text="Опис" Padding="5 10 0 5"></TextBlock>
             <TextBox x:Name="descBox"></TextBox>
-            
+
+            <TextBlock Text="Категорії" Padding="5 10 0 5"></TextBlock>
+
+            <Button Content="Вибрати категорії">
+                <Button.Flyout>
+                    <Flyout>
+                        <ListView SelectionMode="None" x:Name="categoriesListView" ItemsSource="{x:Bind categoryMap}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="CheckBox_Checked" Unchecked="UncheckBox_Checked" Content="{Binding Key}" CommandParameter="{Binding Value}" Margin="5 0 0 0" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <!--<ComboBox SelectedItem="Категорії" IsEditable="False">
+                <ListView SelectionMode="None" x:Name="categoriesListView" ItemsSource="{x:Bind categoryMap}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Checked="CheckBox_Checked" Unchecked="UncheckBox_Checked" Content="{Binding Key}" CommandParameter="{Binding Value}" Margin="5 0 0 0" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ComboBox>-->
+
             <TextBlock Text="Магазин" Padding="5 10 0 5"></TextBlock>
             <ComboBox x:Name="shopBox" DisplayMemberPath="Name" SelectedValuePath="Id" />
 
             <TextBlock x:Name="typeUniqueAtribute" Text="Код" Padding="5 10 0 5"></TextBlock>
             <TextBox x:Name="uniqueAtributeValue" ></TextBox>
+            <TextBlock Visibility="Collapsed" x:Name="errorMessage" Padding="5 10 0 5" Foreground="Crimson"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Button Click="CancelButton_Click" Content="Відмінити" HorizontalAlignment="Left"/>
+                <Button Click="ContentDialog_CofirmClick" Content="Підтвердити" HorizontalAlignment="Right"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </ContentDialog>

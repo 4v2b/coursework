@@ -28,13 +28,23 @@ namespace PromotionAggeregator.Presentation.Views
             this.InitializeComponent();
             ArrayList list = Init.Convert(Context.Instance.Promotions);
             Init.BindClick(PromotionTap, list);
-            listView.ItemsSource = list;
+            IdentityUser identityUser = new IdentityUser();
+            identityUser.Notify += view.CountHandler;
+            view.IdentityUser = identityUser;
+            searchField.Identity = identityUser;
+            searchField.OnSearchClick += view.Search;
+            view.PromotionTap += PromotionTap;
+            
+            //listView.ItemsSource = list;
+            //SetDefaultState(shops);
+
         }
 
         private void Search(object sender, ArrayList e)
         {
             Init.BindClick(PromotionTap, e);
-            listView.ItemsSource = e;
+            //listView.ItemsSource = e;
+            //SetDefaultState(shops);
         }
 
         private void SignInClick(object sender, RoutedEventArgs e)
@@ -57,10 +67,38 @@ namespace PromotionAggeregator.Presentation.Views
             if (e.Parameter is ArrayList)
             {
                 Init.BindClick(PromotionTap, (ArrayList)e.Parameter);
-                listView.ItemsSource = e.Parameter;
+                //listView.ItemsSource = e.Parameter;
             }
             base.OnNavigatedTo(e);
         }
 
+        //private void SetDefaultState(ListView list)
+        //{
+        //    List<Shop> firstChoise = Context.Instance.Shops;
+        //    if (firstChoise.Count > 5)
+        //    {
+        //        list.ItemsSource = firstChoise.GetRange(0, 5);
+        //        moreBtn.Visibility = Visibility.Visible;
+        //    }
+        //    else
+        //    {
+        //        list.ItemsSource = Context.Instance.Shops;
+        //        moreBtn.Visibility = Visibility.Collapsed;
+        //    }
+        //}
+
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    shops.ItemsSource = Context.Instance.Shops;
+        //}
+
+        //private void shops_ItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    var selectedShop = e.ClickedItem as Shop;
+        //    var list = Init.Convert(Context.Instance.Promotions.FindAll(x => x.ShopId == selectedShop.Id));
+        //    Init.BindClick(PromotionTap, list);
+        //    listView.ItemsSource = list;
+        //    shopsViewer.Visibility = Visibility.Collapsed;
+        //}
     }
 }

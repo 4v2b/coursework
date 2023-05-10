@@ -101,5 +101,22 @@ namespace PromotionAggregator.Tests.Tests
             Assert.AreEqual(expected,actual);
 
         }
+
+        [TestMethod]
+        public void CompareTo_return_1_when_instanse_greater_than_parameter()
+        {
+            //Arrange
+            Promotion promotion1 = new SpecialOffer();
+            promotion1.AddingDate = DateTime.Now;
+            Promotion promotion2 = new PromoСode();
+            promotion2.AddingDate = DateTime.Now.AddDays(1);
+            int result;
+
+            //Act
+            result = promotion2.CompareTo(promotion1);
+
+            //Assert
+            Assert.AreEqual(1, result);
+        }
     }
 }

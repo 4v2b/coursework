@@ -1,4 +1,5 @@
-﻿using PromotionAggregator.Logic.Context;
+﻿using PromotionAggeregator.Presentation.Services;
+using PromotionAggregator.Logic.Context;
 using PromotionAggregator.Logic.Models;
 using System;
 using System.Collections.Generic;
@@ -25,25 +26,21 @@ namespace PromotionAggeregator.Presentation.Views
     {
         PromoСode promoCode;
 
+        private Dictionary<string, Category> categoryMap;
+
+        private List<Category> selectedCategories;
+
         public AddPromoCodeDialog()
         {
             this.InitializeComponent();
             shopBox.ItemsSource = Context.Instance.Shops;
+            categoryMap = Util.CategoryMap;
+            selectedCategories = new List<Category>();
         }
 
         public event EventHandler<PromoСode> PromoCodeConfirmed;
 
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-            this.Hide();
-        }
-
-        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-            PromoCodeConfirmed(this, getNewPromotion().Result);
-        }
-
-        private async Task<PromoСode> getNewPromotion()
+        private void ContentDialog_CofirmClick(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -51,15 +48,42 @@ namespace PromotionAggeregator.Presentation.Views
                 promoCode.Title = titleBox.Text;
                 promoCode.Description = descBox.Text;
                 promoCode.ShopId = (string)shopBox.SelectedValue;
-                return promoCode;
+
+                if (selectedCategories.Count < 1)
+                {
+                    throw new Exception("Необхідно обрати щонайменше\nодну категорію");
+                }
+                else
+                {
+                    foreach (Category c in selectedCategories)
+                    {
+                        promoCode.Categories.Add(c);
+                    }
+                }
+                this.Hide();
+                PromoCodeConfirmed?.Invoke(this, promoCode);
             }
             catch (Exception ex)
             {
-                await new MessageDialog(ex.Message).ShowAsync();
-                return null;
+                errorMessage.Visibility = Visibility.Visible;
+                errorMessage.Text = ex.Message;
             }
 
         }
 
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            selectedCategories.Add((Category)(sender as CheckBox).CommandParameter);
+        }
+
+        private void UncheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            selectedCategories.Remove((Category)(sender as CheckBox).CommandParameter);
+        }
     }
 }

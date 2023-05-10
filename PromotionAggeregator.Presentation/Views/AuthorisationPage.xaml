@@ -9,8 +9,21 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="665,500,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="40" Width="180"/>
-        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="665,570,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="39" Width="179"/>
-        <Button x:Name="confirm" Content="Button" Margin="787,645,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <StackPanel x:Name="stackPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20">
+            <TextBlock Text="Ел. пошта" Padding="5"/>
+            <TextBox Width="{Binding ElementName=stackPanel}" Margin="5 0 5 5" x:Name="email" HorizontalAlignment="Stretch"/>
+
+            <TextBlock Text="Пароль" Padding="5"/>
+
+            <PasswordBox x:Name="password" Width="{Binding ElementName=stackPanel}" Margin="5 0 5 5"/>
+
+            <TextBlock MaxWidth="{Binding ElementName=stackPanel}" x:Name="errorMessage" Foreground="Crimson"  TextWrapping="WrapWholeWords" HorizontalAlignment="Center" Text=""></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="cancel" Margin="10" Content="Відміна" HorizontalAlignment="Center" VerticalAlignment="Center" Click="cancel_Click" Height="33" Width="127"/>
+
+                <Button x:Name="confirm" Margin="10" Content="Увійти" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" Height="33" Width="127"/>
+            </StackPanel>
+        </StackPanel>
+
     </Grid>
 </Page>

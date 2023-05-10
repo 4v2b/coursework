@@ -30,7 +30,7 @@
                     <GradientStop Color="#FFEBEBEB" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.BorderBrush>
-            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0" OnSearchClick="Search"/>
+            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0"/>
             <Button Content="Вийти" VerticalAlignment="Center" Click="logout_Click" HorizontalAlignment="Right" Margin="0,0,30,0"/>
 
         </Grid>
@@ -65,14 +65,21 @@
                                             <Flyout x:Name="commentFlyout">
                                                 <Flyout.Content>
                                                     <StackPanel>
-                                                        <TextBlock Text="Видалити" />
-                                                        <Button Click="DeleteClick" CommandParameter="{Binding UserId}" Content="Так" Margin="0 10 0 0" />
-                                                        <Button Click="HideClick" CommandParameter="{Binding ElementName=commentFlyout}" Content="Ні" Margin="0 10 0 0" />
+                                                        <TextBlock Text="Бажаєте видалити коментар" />
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition/>
+                                                                <ColumnDefinition/>
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <Button Click="DeleteClick" Grid.Column="1" CommandParameter="{Binding UserId}" Content="Так" Margin="0 10 0 0" />
+                                                            <Button Click="HideClick" CommandParameter="{Binding ElementName=commentFlyout}" Content="Ні" Margin="0 10 0 0" />
+                                                        </Grid>
                                                     </StackPanel>
                                                 </Flyout.Content>
                                             </Flyout>
                                         </Button.Flyout>
-                                        <SymbolIcon Symbol="More"/>
+                                        <SymbolIcon Symbol="Delete"/>
                                     </Button>
                                 </StackPanel>
                             </DataTemplate>

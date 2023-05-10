@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PromotionAggregator.Logic.Models
 {
-    public abstract class Promotion
+    public abstract class Promotion:IComparable<Promotion>
     {
         [JsonProperty]
         private double rating = default;
@@ -68,6 +68,9 @@ namespace PromotionAggregator.Logic.Models
         [JsonProperty]
         public List<Comment> Comments{ get; private set; }
 
-
+        public int CompareTo(Promotion other)
+        {
+            return AddingDate.CompareTo(other.AddingDate);
+        }
     }
 }
