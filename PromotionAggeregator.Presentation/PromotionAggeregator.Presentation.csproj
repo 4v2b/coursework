@@ -119,9 +119,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Init.cs" />
     <Compile Include="Services\Util.cs" />
@@ -137,32 +134,38 @@
     <Compile Include="Views\AdminMainPage.xaml.cs">
       <DependentUpon>AdminMainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddPromotionDialog.xaml.cs">
-      <DependentUpon>AddPromotionDialog.xaml</DependentUpon>
+    <Compile Include="Views\AddAdvancedPromotionDialog.xaml.cs">
+      <DependentUpon>AddAdvancedPromotionDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AdminPromotionView.xaml.cs">
-      <DependentUpon>AdminPromotionView.xaml</DependentUpon>
+    <Compile Include="Views\Comment.xaml.cs">
+      <DependentUpon>Comment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GrantUserDialog.xaml.cs">
+      <DependentUpon>GrantUserDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PromotionAdminItem.xaml.cs">
+      <DependentUpon>PromotionAdminItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Filter.xaml.cs">
       <DependentUpon>Filter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainView.xaml.cs">
-      <DependentUpon>MainView.xaml</DependentUpon>
+    <Compile Include="Views\UnitedMainView.xaml.cs">
+      <DependentUpon>UnitedMainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PromotionAdminView.xaml.cs">
-      <DependentUpon>PromotionAdminView.xaml</DependentUpon>
+    <Compile Include="Views\PromotionDetailsAdminView.xaml.cs">
+      <DependentUpon>PromotionDetailsAdminView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PromotionGuestView.xaml.cs">
-      <DependentUpon>PromotionGuestView.xaml</DependentUpon>
+    <Compile Include="Views\PromotionDetailsGuestView.xaml.cs">
+      <DependentUpon>PromotionDetailsGuestView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PromotionUserView.xaml.cs">
-      <DependentUpon>PromotionUserView.xaml</DependentUpon>
+    <Compile Include="Views\PromotionDetailsAuthorisedUserView.xaml.cs">
+      <DependentUpon>PromotionDetailsAuthorisedUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchField.xaml.cs">
       <DependentUpon>SearchField.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PromotionModel.xaml.cs">
-      <DependentUpon>PromotionModel.xaml</DependentUpon>
+    <Compile Include="Views\PromotionViewItem.xaml.cs">
+      <DependentUpon>PromotionViewItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AuthorisationPage.xaml.cs">
       <DependentUpon>AuthorisationPage.xaml</DependentUpon>
@@ -173,8 +176,14 @@
     <Compile Include="Views\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserMainPage.xaml.cs">
-      <DependentUpon>UserMainPage.xaml</DependentUpon>
+    <Compile Include="Views\AuthorisedUserMainPage.xaml.cs">
+      <DependentUpon>AuthorisedUserMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WishListItem.xaml.cs">
+      <DependentUpon>WishListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WishListView.xaml.cs">
+      <DependentUpon>WishListView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -198,10 +207,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\AddPromoCodeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -218,11 +223,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddPromotionDialog.xaml">
+    <Page Include="Views\AddAdvancedPromotionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AdminPromotionView.xaml">
+    <Page Include="Views\Comment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GrantUserDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PromotionAdminItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,19 +243,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainView.xaml">
+    <Page Include="Views\UnitedMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PromotionAdminView.xaml">
+    <Page Include="Views\PromotionDetailsAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PromotionGuestView.xaml">
+    <Page Include="Views\PromotionDetailsGuestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PromotionUserView.xaml">
+    <Page Include="Views\PromotionDetailsAuthorisedUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -250,7 +263,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PromotionModel.xaml">
+    <Page Include="Views\PromotionViewItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -266,7 +279,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\UserMainPage.xaml">
+    <Page Include="Views\AuthorisedUserMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WishListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WishListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,6 +295,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>7.1.3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.8.3</Version>

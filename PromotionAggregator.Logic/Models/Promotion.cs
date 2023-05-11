@@ -33,7 +33,7 @@ namespace PromotionAggregator.Logic.Models
         public string Title { get=>title; set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException();
+                    throw new ArgumentException("Заголовок не може бути порожнім");
                 title = value;
             }
             }
@@ -41,7 +41,7 @@ namespace PromotionAggregator.Logic.Models
         [JsonIgnore]
         public string Description { get=>description; set {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException(); 
+                    throw new ArgumentException("Опис не може бути порожнім"); 
                 description = value; 
             } }
 

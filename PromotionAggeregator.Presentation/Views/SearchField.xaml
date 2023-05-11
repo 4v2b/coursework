@@ -9,11 +9,12 @@
    Height="{Binding ActualHeight, ElementName=myGrid}"
              Width="{Binding ActualWidth, ElementName=myGrid}">
 
-    <Grid x:Name="myGrid" Background="White" BorderBrush="DarkGray" BorderThickness="2" >
+    <Grid x:Name="myGrid" Background="White" BorderBrush="Black" BorderThickness=".5" >
         <Button Margin="205,0,0,0" Background="White" Height="50" Width="50" Click="ButtonClick">
             <SymbolIcon Symbol="Find"/>
         </Button>
-        <Button Margin="255,0,0,0" Background="White" Height="50" Width="120">
+        
+        <Button Margin="255,0,0,0" Background="White" Height="40" Width="120">
             <StackPanel Orientation="Horizontal">
                 <SymbolIcon Symbol="GlobalNavigationButton"/>
                 <TextBlock Text="Категорії" Margin="5 0 5 0"/>
@@ -30,17 +31,10 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </Flyout>
-                <!--<MenuFlyout>
-                    <MenuFlyoutItem Text="Мода" Width="100" />
-                    <MenuFlyoutItem Text="Техніка"  Width="100"/>
-                    <MenuFlyoutItem Text="Здоров'я"  Width="100"/>
-                    <MenuFlyoutItem Text="Книга" Width="100"/>
-                    <MenuFlyoutItem Text="Аксесуари" Width="100"/>
-                    <MenuFlyoutItem Text="Дім та сад" Width="100"/>
-                </MenuFlyout>-->
             </Button.Flyout>
         </Button>
-        <TextBox x:Name="searchField" HorizontalAlignment="Left" TextWrapping="NoWrap" Margin="5, 0,0 0" Text="" VerticalAlignment="Center" Width="200" Background="{x:Null}" BorderBrush="Transparent"/>
+        
+        <TextBox x:Name="searchField" HorizontalAlignment="Left" TextWrapping="NoWrap" MaxLength="100" Margin="5, 0,0 0" Text="" VerticalAlignment="Center" Width="200" Background="{x:Null}" BorderBrush="Transparent"/>
         <Border BorderBrush="Black" BorderThickness="1"/>
     </Grid>
 </UserControl>

@@ -6,8 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-   Height="{Binding ActualHeight, ElementName=myGrid}"
-             Width="{Binding ActualWidth, ElementName=myGrid}">
+   Height="{Binding Path=ActualHeight, ElementName=myGrid}"
+             Width="{Binding Path=ActualWidth, ElementName=myGrid}">
 
     <Grid x:Name="myGrid" Background="White" Padding="20">
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
@@ -17,7 +17,7 @@
                     <TextBlock Text="Тип пропозиції" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                 </Grid>
 
-                <StackPanel Padding="20 0 0 0" Name="checkBoxes1" Visibility="Collapsed">
+                <StackPanel Padding="20 5 5 5" Name="checkBoxes1" Visibility="Collapsed">
                     <RadioButton GroupName="typeGroup" Tag="2" Content="Акція" Checked="RadioButton_Checked" />
                     <RadioButton GroupName="typeGroup" Tag="1" Content="Промокод" Checked="RadioButton_Checked"/>
                     <RadioButton GroupName="typeGroup" Tag="0" Content="Усі" Checked="RadioButton_Checked"/>
@@ -28,7 +28,7 @@
                     <TextBlock Text="Період" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                 </Grid>
 
-                <StackPanel Padding="20 0 0 0" Name="checkBoxes2" Visibility="Collapsed">
+                <StackPanel Padding="20 5 5 5" Name="checkBoxes2" Visibility="Collapsed">
                     <RadioButton Checked="RadioButton_Checked" GroupName="periodGroup" Tag="1" Content="1 день" FontSize="14" ExitDisplayModeOnAccessKeyInvoked="False" Height="32" />
                     <RadioButton Checked="RadioButton_Checked" GroupName="periodGroup" Tag="7" Content="7 днів" />
                     <RadioButton Checked="RadioButton_Checked" GroupName="periodGroup" Tag="30" Content="30 днів" />
@@ -40,21 +40,24 @@
                     <TextBlock Text="Рейтинг" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                 </Grid>
 
-                <StackPanel Padding="20 0 0 0" Name="checkBoxes3" Visibility="Collapsed">
+                <StackPanel Padding="20 5 5 5" Name="checkBoxes3" Visibility="Collapsed">
                     <RadioButton Checked="RadioButton_Checked" GroupName="ratingGroup" Tag="4" Content="4 та більше " />
                     <RadioButton Checked="RadioButton_Checked" GroupName="ratingGroup" Tag="3" Content="3 та більше" />
                     <RadioButton Checked="RadioButton_Checked" GroupName="ratingGroup" Tag="-1" Content="Будь-який" />
                 </StackPanel>
-                <Grid>
+                
+                <Grid HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button HorizontalAlignment="Center" Grid.Column="0" Content="Скинути" Click="ResetClick"></Button>
-
-                    <Button HorizontalAlignment="Center" Grid.Column="1" Content="Фільтрувати" Click="FilterClick"></Button>
 
                 </Grid>
+
+                <Button  HorizontalAlignment="Stretch" Margin="5" Grid.Column="1" Content="Фільтрувати" Click="FilterClick" Style="{StaticResource AuthButton}"></Button>
+
+                <Button HorizontalAlignment="Stretch" Margin="5" Grid.Column="0" Content="Скасувати фільтри" Click="ResetClick" Style="{StaticResource CancelButton}"></Button>
+
             </StackPanel>
         </ScrollViewer> 
     </Grid>

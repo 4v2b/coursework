@@ -24,7 +24,7 @@ namespace PromotionAggeregator.Presentation.Views
 {
     public sealed partial class AddPromoCodeDialog : ContentDialog
     {
-        PromoСode promoCode;
+        PromoCode promoCode;
 
         private Dictionary<string, Category> categoryMap;
 
@@ -38,16 +38,17 @@ namespace PromotionAggeregator.Presentation.Views
             selectedCategories = new List<Category>();
         }
 
-        public event EventHandler<PromoСode> PromoCodeConfirmed;
+        public event EventHandler<PromoCode> PromoCodeConfirmed;
 
         private void ContentDialog_CofirmClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                promoCode = new PromoСode();
+                promoCode = new PromoCode();
                 promoCode.Title = titleBox.Text;
                 promoCode.Description = descBox.Text;
                 promoCode.ShopId = (string)shopBox.SelectedValue;
+                promoCode.EndDate = DateTime.Now.AddDays(7);
 
                 if (selectedCategories.Count < 1)
                 {

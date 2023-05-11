@@ -51,5 +51,10 @@ namespace PromotionAggeregator.Presentation.Views
             Context.Instance.SaveAll();
             Frame.Navigate(typeof(AdminControl), manager.User);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AdminMainPage), manager.User as Admin);
+        }
     }
 }

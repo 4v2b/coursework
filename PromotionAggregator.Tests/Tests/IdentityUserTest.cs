@@ -24,7 +24,7 @@ namespace PromotionAggregator.Tests.Tests
         {
             //Arrange
             IdentityUser identity = new IdentityUser();
-            PromoСode promoСode = new PromoСode();
+            PromoCode promoСode = new PromoCode();
             Context.Instance.Promotions.Clear();
             new Admin().AddPromotion(promoСode);
             int expected = 0;
@@ -41,7 +41,7 @@ namespace PromotionAggregator.Tests.Tests
         {
             //Arrange
             IdentityUser identity = new IdentityUser();
-            PromoСode promoСode = new PromoСode();
+            PromoCode promoСode = new PromoCode();
             Context.Instance.Promotions.Clear();
             new Admin().AddPromotion(promoСode);
             int expected = 1;
@@ -58,7 +58,7 @@ namespace PromotionAggregator.Tests.Tests
         {
             //Arrange
             IdentityUser identity = new IdentityUser();
-            PromoСode promoСode = new PromoСode();
+            PromoCode promoСode = new PromoCode();
             promoСode.Categories.Add(Category.Fashion);
             Context.Instance.Promotions.Clear();
             new Admin().AddPromotion(promoСode);
@@ -76,7 +76,7 @@ namespace PromotionAggregator.Tests.Tests
         {
             //Arrange
             IdentityUser identity = new IdentityUser();
-            PromoСode promoСode = new PromoСode();
+            PromoCode promoСode = new PromoCode();
             promoСode.Categories.Add(Category.Garden);
             Context.Instance.Promotions.Clear();
             new Admin().AddPromotion(promoСode);
@@ -95,7 +95,7 @@ namespace PromotionAggregator.Tests.Tests
         {
             //Arrange
             IdentityUser identity = new IdentityUser();
-            PromoСode promoСode = new PromoСode();
+            PromoCode promoСode = new PromoCode();
             Context.Instance.Promotions.Clear();
             new Admin().AddPromotion(promoСode);
             int expected = 0;
@@ -113,7 +113,7 @@ namespace PromotionAggregator.Tests.Tests
         {
             //Arrange
             IdentityUser identity = new IdentityUser();
-            PromoСode promoСode = new PromoСode();
+            PromoCode promoСode = new PromoCode();
             string id = "id";
             promoСode.ShopId = id;
             Context.Instance.Promotions.Clear();
@@ -133,7 +133,7 @@ namespace PromotionAggregator.Tests.Tests
         {
             //Arrange
             IdentityUser identity = new IdentityUser();
-            PromoСode promoСode = new PromoСode()
+            PromoCode promoСode = new PromoCode()
             {
                 Title ="Discount 50%"
             };
@@ -154,7 +154,7 @@ namespace PromotionAggregator.Tests.Tests
         {
             //Arrange
             IdentityUser identity = new IdentityUser();
-            PromoСode promoСode = new PromoСode()
+            PromoCode promoСode = new PromoCode()
             {
                 Title = "Discount 50%"
             };

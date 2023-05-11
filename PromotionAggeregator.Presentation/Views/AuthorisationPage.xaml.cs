@@ -36,7 +36,7 @@ namespace PromotionAggeregator.Presentation.Views
                 User user = Authentication.SignIn(email.Text, password.Password);
                 if (user is AuthorisedUser)
                 {
-                    Frame.Navigate(typeof(UserMainPage), user);
+                    Frame.Navigate(typeof(AuthorisedUserMainPage), user);
                 }
                 else Frame.Navigate(typeof(AdminMainPage), user);
             }

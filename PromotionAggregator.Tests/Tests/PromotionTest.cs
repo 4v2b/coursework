@@ -18,7 +18,7 @@ namespace PromotionAggregator.Tests.Tests
 
             //Arrange
             string test = string.Empty;
-           Promotion promo = new PromoСode();
+           Promotion promo = new PromoCode();
 
             //Act + Assert
             Assert.ThrowsException<ArgumentException>(() => promo.Title = test);
@@ -31,7 +31,7 @@ namespace PromotionAggregator.Tests.Tests
 
             //Arrange
             string test = "title";
-            Promotion promo = new PromoСode();
+            Promotion promo = new PromoCode();
 
             //Act
             promo.Title = test;
@@ -47,7 +47,7 @@ namespace PromotionAggregator.Tests.Tests
 
             //Arrange
             string test = string.Empty;
-            Promotion promo = new PromoСode();
+            Promotion promo = new PromoCode();
 
             //Act + Assert
             Assert.ThrowsException<ArgumentException>(() => promo.Description = test);
@@ -60,7 +60,7 @@ namespace PromotionAggregator.Tests.Tests
 
             //Arrange
             string test = "deccription";
-            Promotion promo = new PromoСode();
+            Promotion promo = new PromoCode();
 
             //Act
             promo.Description = test;
@@ -76,7 +76,7 @@ namespace PromotionAggregator.Tests.Tests
 
             //Arrange
             double test = -15;
-            Promotion promo = new PromoСode();
+            Promotion promo = new PromoCode();
 
             //Act + Assert
             Assert.ThrowsException<ArgumentException>(() => promo.Rating = test);
@@ -88,7 +88,7 @@ namespace PromotionAggregator.Tests.Tests
         {
 
             //Arrange
-            Promotion promo = new PromoСode();
+            Promotion promo = new PromoCode();
             double expected = 3.5;
             double actual;
 
@@ -108,7 +108,7 @@ namespace PromotionAggregator.Tests.Tests
             //Arrange
             Promotion promotion1 = new SpecialOffer();
             promotion1.AddingDate = DateTime.Now;
-            Promotion promotion2 = new PromoСode();
+            Promotion promotion2 = new PromoCode();
             promotion2.AddingDate = DateTime.Now.AddDays(1);
             int result;
 

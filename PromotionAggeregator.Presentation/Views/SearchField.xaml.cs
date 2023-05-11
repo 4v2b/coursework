@@ -39,7 +39,10 @@ namespace PromotionAggeregator.Presentation.Views
 
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
-            this.OnSearchClick?.Invoke(sender, Identity.Search(searchField.Text));
+            if (searchField.Text != string.Empty)
+            {
+                this.OnSearchClick?.Invoke(sender, Identity.Search(searchField.Text));
+            }
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)

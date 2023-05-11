@@ -53,7 +53,7 @@ namespace PromotionAggregator.Logic.Services
             IEnumerable<Promotion> temp;
             if (mode == FilterMode.OnlyCode)
             {
-                temp = promotions.Where(x => x is PromoСode);
+                temp = promotions.Where(x => x is PromoCode);
             }
             else if(mode == FilterMode.OnlyOffer)
             {

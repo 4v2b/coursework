@@ -27,8 +27,6 @@ namespace PromotionAggeregator.Presentation.Views
     /// </summary>
     public sealed partial class RegistrationPage : Page
     {
-        private Type prevPage;
-
         public RegistrationPage()
         {
             this.InitializeComponent();
@@ -43,7 +41,7 @@ namespace PromotionAggeregator.Presentation.Views
                 errorMessage.Text = "";
                 if (user is AuthorisedUser)
                 {
-                    Frame.Navigate(typeof(UserMainPage), user);
+                    Frame.Navigate(typeof(AuthorisedUserMainPage), user);
                 }
                 else
                 {

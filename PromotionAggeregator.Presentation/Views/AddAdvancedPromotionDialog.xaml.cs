@@ -57,8 +57,8 @@ namespace PromotionAggeregator.Presentation.Views
                 }
                 else if (codeCheck.IsChecked.GetValueOrDefault(false))
                 {
-                    promotion = new PromoСode();
-                    ((PromoСode)promotion).Code = uniqueAtributeValue.Text;
+                    promotion = new PromoCode();
+                    ((PromoCode)promotion).Code = uniqueAtributeValue.Text;
                 }
                 promotion.Title = titleBox.Text;
                 promotion.Description = descBox.Text;

@@ -156,7 +156,7 @@ namespace PromotionAggregator.Tests.Tests
         {
             //Arrange
             var promotions = Context.Instance.Promotions;
-            Promotion promotion = new PromoСode();
+            Promotion promotion = new PromoCode();
             promotions.Add(promotion);
             promotion.Categories.Add(Category.Books);
             Admin admin = GetDefaultAdmin();

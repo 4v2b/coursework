@@ -12,7 +12,7 @@ namespace PromotionAggregator.Tests.Tests
 
             //Arrange
             string test = string.Empty;
-            PromoСode promo = new PromoСode();
+            PromoCode promo = new PromoCode();
 
             //Act + Assert
             Assert.ThrowsException<ArgumentException>(() => promo.Code = test);
@@ -25,7 +25,7 @@ namespace PromotionAggregator.Tests.Tests
 
             //Arrange
             string test = "code";
-            PromoСode promo = new PromoСode();
+            PromoCode promo = new PromoCode();
 
             //Act
             promo.Code = test;

@@ -8,7 +8,7 @@ namespace PromotionAggregator.Logic.Services
     public class AuthorisedUser : User
     {
         [JsonProperty]
-        private HashSet<string> RatedPromotions { get; set; }
+        public HashSet<string> RatedPromotions { get; private set; }
 
         public AuthorisedUser(string email, string password) :
             base(email, password)

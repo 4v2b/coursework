@@ -81,7 +81,7 @@ namespace PromotionAggregator.Tests.Tests
             {
                 Url = "http://localhost"
             },
-            new PromoСode()
+            new PromoCode()
             {
                 Code = "000000",
             }

@@ -36,10 +36,12 @@ namespace PromotionAggeregator.Presentation.Views
 
         public event EventHandler<List<Promotion>> OnFilterClick;
 
+        public event EventHandler OnResetClick;
+
 
         private void ResetClick(object sender, RoutedEventArgs e)
         {
-            OnFilterClick?.Invoke(sender, Context.Instance.Promotions);
+            OnResetClick?.Invoke(sender, null);
         }
 
         private void FilterClick(object sender, RoutedEventArgs e)

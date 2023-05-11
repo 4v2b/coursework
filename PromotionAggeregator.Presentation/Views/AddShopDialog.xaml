@@ -7,17 +7,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="Додати магазин"
+    Background="{Binding Source={StaticResource NeutralColor}}"
 >
     <Grid>
         <StackPanel>
             <TextBlock Text="Назва" Padding="5 10 0 5"/>
-            <TextBox x:Name="titleBox"/>
-            <TextBlock Text="Посилання на сайт" Padding="5 10 0 5"/>
-            <TextBox x:Name="linkBox"/>
+            <TextBox x:Name="titleBox" MaxLength="20" TextWrapping="Wrap"/>
+            <TextBlock Text="Посилання на сайт" Padding="5 10 0 5" />
+            <TextBox x:Name="linkBox" TextWrapping="Wrap"/>
             <TextBlock Visibility="Collapsed" x:Name="errorMessage" Padding="5 10 0 5" Foreground="Crimson"/>
-            <StackPanel Orientation="Horizontal">
-                <Button Click="CancelButton_Click" Content="Відмінити"/>
-                <Button Click="ContentDialog_CofirmClick" Content="Підтвердити"/>
+            <StackPanel Margin="0 10 0 5" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Margin="5" Style="{Binding Source={StaticResource CancelButton}}" Click="CancelButton_Click" Content="Відмінити" HorizontalAlignment="Left"/>
+                <Button Margin="5"  Style="{Binding Source={StaticResource AuthButton}}" Click="ContentDialog_CofirmClick" Content="Підтвердити" HorizontalAlignment="Right"/>
             </StackPanel>
         </StackPanel>
     </Grid>

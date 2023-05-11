@@ -23,7 +23,7 @@ namespace PromotionAggregator.Logic.Models
         public string Name { get=>name;
             set {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException();
+                    throw new ArgumentException("Назва не може бути порожнью");
                 name = value;
             } 
         }
@@ -33,7 +33,7 @@ namespace PromotionAggregator.Logic.Models
             set
             {
                 if (!Uri.IsWellFormedUriString(value, UriKind.Absolute))
-                    throw new ArgumentException();
+                    throw new ArgumentException("Невірне посилання");
                 url = value;
             }
         }

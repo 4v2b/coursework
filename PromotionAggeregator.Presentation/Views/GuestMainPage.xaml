@@ -4,51 +4,36 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PromotionAggeregator.Presentation.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:logic11="using:PromotionAggregator.Logic.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:logic11="using:PromotionAggregator.Logic.Models" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="#EFF5F5">
 
     <Grid Background="#EFF5F5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="11*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="12" Height="90" Background="AliceBlue" VerticalAlignment="Center" BorderThickness="0,0,0,3">
-            <Grid.BorderBrush>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FFEBEBEB" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.BorderBrush>
-            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0"/>
-            <Button Content="Увійти" VerticalAlignment="Center" Click="SignInClick" HorizontalAlignment="Right" Margin="0,0,30,0"/>
-            <Button Content="Зареєструватися" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,120,0" Click="RegisterClick"/>
-        </Grid>
-        <local:MainView HorizontalAlignment="Stretch" x:Name="view" Grid.Column="0" Grid.ColumnSpan="12" Grid.Row="1" Grid.RowSpan="11"/>
+        <!--OffsetX="-20"
+                          OffsetY="-20"-->
+        <controls:DropShadowPanel Color="Black" 
+                          BlurRadius="50"
+                                  OffsetY="-20"
+                          ShadowOpacity=".2"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Stretch">
+            <Grid Grid.Row="0"  Height="90" Background="#D6E4E5" VerticalAlignment="Center" BorderThickness="0,0,0,3">
+                <Grid.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.BorderBrush>
+                <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0" Height="50"/>
+                <Button Content="Увійти" VerticalAlignment="Center" Click="SignInClick" HorizontalAlignment="Right" Margin="0,0,30,0" Background="#FF497174" Foreground="#FFD6E4E5" FontWeight="Bold" Style="{Binding Source={StaticResource AuthButton}}"/>
+                <Button Content="Зареєструватися" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,120,0" Click="RegisterClick" Background="#FF497174" Foreground="#FFD6E4E5" FontWeight="Bold" Style="{Binding Source={StaticResource AuthButton}}"/>
+            </Grid>
+        </controls:DropShadowPanel>
+        <local:MainView HorizontalAlignment="Stretch" x:Name="view" Grid.Row="1"/>
 
     </Grid>
 </Page>

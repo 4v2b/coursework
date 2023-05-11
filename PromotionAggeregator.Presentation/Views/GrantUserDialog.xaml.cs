@@ -1,4 +1,5 @@
-﻿using PromotionAggregator.Logic.Models;
+﻿using PromotionAggregator.Logic.Context;
+using PromotionAggregator.Logic.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,36 +19,40 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PromotionAggeregator.Presentation.Views
 {
-    public sealed partial class AddShopDialog : ContentDialog
+    public sealed partial class GrantUserDialog : ContentDialog
     {
-        public AddShopDialog()
+        private Admin Admin { get; set; }
+
+        public GrantUserDialog()
         {
             this.InitializeComponent();
+            var users = Context.Instance.Users.FindAll(x => x is AuthorisedUser);
+            userBox.ItemsSource = users;
         }
 
-        public event EventHandler<Shop> ShopConfirmed;
+        public GrantUserDialog(Admin admin):this()
+        {
+            Admin = admin;
+        }
 
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelClick(object sender, RoutedEventArgs e)
         {
             this.Hide();
         }
 
-        private void ContentDialog_CofirmClick(object sender, RoutedEventArgs e)
+        private void ConfirmClick(object sender, RoutedEventArgs e)
         {
-            Shop shop = new Shop();
             try
             {
-                shop.Name = titleBox.Text;
-                shop.Url = linkBox.Text;
-                errorMessage.Visibility = Visibility.Collapsed;
-                ShopConfirmed?.Invoke(sender, shop);
+                Admin.GrantUser(userBox.SelectedValue as string);
+
                 this.Hide();
+                errorMessage.Visibility = Visibility.Collapsed;
             }
             catch(Exception ex)
             {
-                errorMessage.Visibility = Visibility.Visible;
                 errorMessage.Text = ex.Message;
+                errorMessage.Visibility = Visibility.Visible;
             }
         }
     }

@@ -40,12 +40,19 @@ namespace PromotionAggeregator.Presentation.Views
         {
             this.InitializeComponent();
             SetDefaultState(shops);
-            listView.ItemsSource = Context.Instance.Promotions;
+            Refresh();
+            searchInfo.Visibility = Visibility.Collapsed;
         }
 
         private void Filter_OnFilterClick(object sender, List<Promotion> e)
         {
             listView.ItemsSource = e;
+        }
+
+        private void Filter_OnResetClick(object sender, EventArgs e)
+        {
+            searchInfo.Visibility = Visibility.Collapsed;
+            Refresh();
         }
 
         private void listView_ItemClick(object sender, ItemClickEventArgs e)
@@ -56,6 +63,12 @@ namespace PromotionAggeregator.Presentation.Views
         private void shops_ItemClick(object sender, ItemClickEventArgs e)
         {
             var promotions = IdentityUser.GetPromotionsOfShop((e.ClickedItem as Shop).Id);
+            listView.ItemsSource = promotions;
+        }
+
+        public void ShowAllInShop(string shopId)
+        {
+            var promotions = IdentityUser.GetPromotionsOfShop(shopId);
             listView.ItemsSource = promotions;
         }
 
@@ -77,24 +90,41 @@ namespace PromotionAggeregator.Presentation.Views
         private void moreBtn_Click(object sender, RoutedEventArgs e)
         {
             shops.ItemsSource = Context.Instance.Shops;
+            moreBtn.Visibility = Visibility.Collapsed;
         }
 
         public void CountHandler(int count)
         {
-            searchInfo.FontWeight = Windows.UI.Text.FontWeights.Bold;
+            searchInfo.Visibility = Visibility.Visible;
+            searchInfo.FontWeight = Windows.UI.Text.FontWeights.SemiBold;
             string text = string.Empty;
             searchInfo.TextAlignment = TextAlignment.Left;
             if (count != 0)
             {
-                searchInfo.FontSize = 16;
+                searchInfo.FontWeight = Windows.UI.Text.FontWeights.Medium;
+                searchInfo.FontSize = 14;
                 text = $"\nЗнайдено результатів: {count}\n";
             }
             else
             {
+                searchInfo.FontWeight = Windows.UI.Text.FontWeights.SemiBold;
                 searchInfo.FontSize = 20;
+                searchInfo.HorizontalAlignment = HorizontalAlignment.Center;
                 text = "\nРезультатів не знайдено\n";
             }
             searchInfo.Text = text;
         }
+
+        private void PromotionModel_OnPromotionClick(object sender, Promotion e)
+        {
+            PromotionTap?.Invoke(sender, e);
+        }
+
+        public void Refresh()
+        {
+            listView.ItemsSource = Context.Instance.Promotions;
+        }
+
+
     }
 }

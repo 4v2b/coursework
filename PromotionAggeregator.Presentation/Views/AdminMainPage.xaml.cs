@@ -31,75 +31,104 @@ namespace PromotionAggeregator.Presentation.Views
     /// </summary>
     public sealed partial class AdminMainPage : Page
     {
-        private IdentityUser manager;
-        private TextBlock resultIndicator;
+        private IdentityUser identityUser;
         private AddPromotionDialog dialog;
 
 
         private void PromotionTap(object sender, Promotion promotion)
         {
-            var parameters = Tuple.Create(promotion, manager.User as Admin);
+            var parameters = Tuple.Create(promotion, identityUser.User as Admin);
             Frame.Navigate(typeof(PromotionAdminView), parameters);
         }
 
         public AdminMainPage()
         {
             this.InitializeComponent();
-            manager = new IdentityUser();
-            ArrayList list = Init.Convert(Context.Instance.Promotions);
-            Init.BindClick(PromotionTap, list);
-            listView.ItemsSource = list;
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(AuthorisationPage));
+            Frame.Navigate(typeof(GuestMainPage));
         }
-
-        private void Search(object sender, ArrayList e)
-        {
-            Init.BindClick(PromotionTap, e);
-            listView.ItemsSource = e;
-        }
-
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.Parameter is Admin)
+            if (e.Parameter is Admin || e.Parameter is Tuple<string, Admin>)
             {
-                manager = new IdentityUser((Admin)e.Parameter);
+                string shopId = null;
+                if (e.Parameter is Admin)
+                {
+                    identityUser = new IdentityUser((Admin)e.Parameter);
+                }
+                else
+                {
+                    var parameters = e.Parameter as Tuple<string, Admin>;
+                    identityUser = new IdentityUser(parameters.Item2);
+                    shopId = parameters.Item1;
+                }
+                identityUser.Notify += view.CountHandler;
+                view.IdentityUser = identityUser;
+                searchField.Identity = identityUser;
+                searchField.OnSearchClick += view.Search;
+                view.PromotionTap += PromotionTap;
+                if (shopId != null)
+                {
+                    view.ShowAllInShop(shopId);
+                }
             }
-            if (e.Parameter is ArrayList)
-            {
-                Init.BindClick(PromotionTap, (ArrayList)e.Parameter);
-                listView.ItemsSource = e.Parameter;
-            }
+            //if (e.Parameter is Admin)
+            //{
+            //    identityUser = new IdentityUser((Admin)e.Parameter);
+            //    identityUser.Notify += view.CountHandler;
+            //    view.IdentityUser = identityUser;
+            //    searchField.Identity = identityUser;
+            //    searchField.OnSearchClick += view.Search;
+            //    view.PromotionTap += PromotionTap;
+            //}
             base.OnNavigatedTo(e);
         }
 
         private void GetPromotion(object sender, Promotion p)
         {
-            try
-            {
-                ((Admin)manager.User).AddPromotion(p);
-                listView.ItemsSource = Init.Convert(Context.Instance.Promotions);
-            }
-            catch(Exception e)
-            {
-                new MessageDialog(e.Message).ShowAsync();
-            }
+
+                ((Admin)identityUser.User).AddPromotion(p);
+            Context.Instance.SaveAll();
+            view.Refresh();
+            Frame.Navigate(typeof(AdminMainPage), identityUser.User as Admin);
         }
 
         private async void Button_ClickAsync(object sender, RoutedEventArgs e)
         {
             dialog = new AddPromotionDialog();
+            dialog.PromotionConfirmed -= GetPromotion;
             dialog.PromotionConfirmed += GetPromotion;
             await dialog.ShowAsync();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void NavigateToAdminControlClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(AdminControl), manager.User);
+            Frame.Navigate(typeof(AdminControl), identityUser.User);
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            await new GrantUserDialog(identityUser.User as Admin).ShowAsync();
+        }
+
+        private void GetShop(object sender, Shop p)
+        {
+
+            ((Admin)identityUser.User).AddShop(p);
+            Context.Instance.SaveAll();
+           // view.Refresh();
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddShopDialog dialog = new AddShopDialog();
+            dialog.ShopConfirmed -= GetShop;
+            dialog.ShopConfirmed += GetShop;
+            await dialog.ShowAsync();
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -26,8 +27,6 @@ namespace PromotionAggeregator.Presentation.Views
         public GuestMainPage()
         {
             this.InitializeComponent();
-            ArrayList list = Init.Convert(Context.Instance.Promotions);
-            Init.BindClick(PromotionTap, list);
             IdentityUser identityUser = new IdentityUser();
             identityUser.Notify += view.CountHandler;
             view.IdentityUser = identityUser;
@@ -40,15 +39,11 @@ namespace PromotionAggeregator.Presentation.Views
 
         }
 
-        private void Search(object sender, ArrayList e)
-        {
-            Init.BindClick(PromotionTap, e);
-            //listView.ItemsSource = e;
-            //SetDefaultState(shops);
-        }
-
         private void SignInClick(object sender, RoutedEventArgs e)
         {
+            DataPackage package = new DataPackage();
+            package.SetText("text");
+            Clipboard.SetContent(package);
             Frame.Navigate(typeof(AuthorisationPage));
         }
 
@@ -64,41 +59,14 @@ namespace PromotionAggeregator.Presentation.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.Parameter is ArrayList)
+            //var parameters = Tuple.Create(promotion, identityUser.User as Admin);
+           // Frame.Navigate(typeof(PromotionAdminView), parameters);
+
+            if (e.Parameter is string && !string.IsNullOrEmpty(e.Parameter as string))
             {
-                Init.BindClick(PromotionTap, (ArrayList)e.Parameter);
-                //listView.ItemsSource = e.Parameter;
+                view.ShowAllInShop((string)e.Parameter);
             }
             base.OnNavigatedTo(e);
         }
-
-        //private void SetDefaultState(ListView list)
-        //{
-        //    List<Shop> firstChoise = Context.Instance.Shops;
-        //    if (firstChoise.Count > 5)
-        //    {
-        //        list.ItemsSource = firstChoise.GetRange(0, 5);
-        //        moreBtn.Visibility = Visibility.Visible;
-        //    }
-        //    else
-        //    {
-        //        list.ItemsSource = Context.Instance.Shops;
-        //        moreBtn.Visibility = Visibility.Collapsed;
-        //    }
-        //}
-
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    shops.ItemsSource = Context.Instance.Shops;
-        //}
-
-        //private void shops_ItemClick(object sender, ItemClickEventArgs e)
-        //{
-        //    var selectedShop = e.ClickedItem as Shop;
-        //    var list = Init.Convert(Context.Instance.Promotions.FindAll(x => x.ShopId == selectedShop.Id));
-        //    Init.BindClick(PromotionTap, list);
-        //    listView.ItemsSource = list;
-        //    shopsViewer.Visibility = Visibility.Collapsed;
-        //}
     }
 }

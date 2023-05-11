@@ -16,7 +16,7 @@ namespace PromotionAggregator.Logic.Context
 
                 Promotion item;
                 if (url == null)
-                    item = new PromoСode();
+                    item = new PromoCode();
                 else
                     item = new SpecialOffer();
                 serializer.Populate(jo.CreateReader(), item);

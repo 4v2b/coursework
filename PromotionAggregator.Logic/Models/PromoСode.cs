@@ -3,18 +3,21 @@ using System;
 
 namespace PromotionAggregator.Logic.Models
 {
-    public class PromoСode : Promotion
+    public class PromoCode : Promotion
     {
         [JsonProperty]
         private string code = string.Empty;
 
         [JsonIgnore]
-        public string Code { get=>code;
-             set {
+        public string Code
+        {
+            get => code;
+            set
+            {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException();
+                    throw new ArgumentException("Промокод не може бути порожнім");
                 code = value;
-            } 
+            }
         }
     }
 }
