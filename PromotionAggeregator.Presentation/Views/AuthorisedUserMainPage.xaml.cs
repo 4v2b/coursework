@@ -84,6 +84,7 @@ namespace PromotionAggeregator.Presentation.Views
             //listView.ItemsSource = Init.Convert(Context.Instance.Promotions);
             Context.Instance.SaveAll();
             view.Refresh();
+            Frame.Navigate(typeof(AuthorisedUserMainPage), identityUser.User as AuthorisedUser);
         }
 
 

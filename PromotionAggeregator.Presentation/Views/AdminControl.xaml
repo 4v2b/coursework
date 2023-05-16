@@ -16,17 +16,10 @@
             <RowDefinition Height="11*"/>
 
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Height="90" Background="AliceBlue" VerticalAlignment="Center" BorderThickness="0,0,0,3">
-            <Grid.BorderBrush>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FFEBEBEB" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.BorderBrush>
+        <Grid Grid.Row="0" Height="90" Background="AliceBlue" VerticalAlignment="Center">
             <Button Content="Вийти" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0"/>
-            <Button Content="+" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0" />
         </Grid>
-        <ScrollViewer Grid.Row="1"  Width="{Binding ActualWidth, ElementName=list}">
+        <ScrollViewer Grid.Row="1"  Width="{Binding Path=ActualWidth, ElementName=list}" MinWidth="50">
             <StackPanel>
                 <Button Click="Button_Click"  Margin="0 15 15 15" Foreground="Black" Background="#00000000" HorizontalAlignment="Left">
                     <SymbolIcon Symbol="Home"/>

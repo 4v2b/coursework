@@ -44,9 +44,9 @@ namespace PromotionAggeregator.Presentation.Views
                 AuthorisedUser = parameters.Item2;
                 wishBtn.Click -= RemoveWish;
                 wishBtn.Click -= AddWish;
-                //Shop = Context.Instance.Shops.Find(x => x.Id == Promotion.ShopId);
-                //shopLink.NavigateUri = new Uri(Shop.Url);
-                //shopName.Text = Shop.Name;
+                Shop = Context.Instance.Shops.Find(x => x.Id == Promotion.ShopId);
+                shopLink.NavigateUri = new Uri(Shop.Url);
+                shopName.Text = Shop.Name;
                 SwapButton();
                 SetActionType();
                 comments.ItemsSource = Promotion.Comments;
@@ -58,6 +58,7 @@ namespace PromotionAggeregator.Presentation.Views
                 if (AuthorisedUser.RatedPromotions.Contains(Promotion.Id))
                 {
                     rating.IsEnabled = false;
+                    rating.Foreground = Application.Current.Resources["AccentColor"] as SolidColorBrush;
                 }
             }
             base.OnNavigatedTo(e);
@@ -80,8 +81,6 @@ namespace PromotionAggeregator.Presentation.Views
                 promoType.Text = "Акція";
             }
         }
-
-        private void Search(object sender, ArrayList e) => Frame.Navigate(typeof(AuthorisedUserMainPage), e);
 
         private void SignOutClick(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(GuestMainPage));
 
@@ -130,6 +129,7 @@ namespace PromotionAggeregator.Presentation.Views
             DataPackage package = new DataPackage();
             package.SetText(((Promotion as PromoCode).Code));
             Clipboard.SetContent(package);
+            (sender as Button).Style = Application.Current.Resources["AuthButton"] as Style;
         }
 
         private async void SpecialOfferActionClickAsync(object sender, RoutedEventArgs e)

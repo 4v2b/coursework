@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PromotionAggeregator.Presentation.Services
 {
-    public static class Util
+    public static class CategoryResource
     {
         private static readonly Dictionary<string, Category> categoryMap = new Dictionary<string, Category>()
             {

@@ -32,7 +32,7 @@ namespace PromotionAggeregator.Presentation.Views
 
         public AddPromotionDialog()
         {
-            categoryMap = Util.CategoryMap;
+            categoryMap = CategoryResource.CategoryMap;
             this.InitializeComponent();
             offerCheck.IsChecked = true;
             shopBox.ItemsSource = Context.Instance.Shops;

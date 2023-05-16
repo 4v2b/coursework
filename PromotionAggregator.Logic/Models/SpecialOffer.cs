@@ -16,7 +16,7 @@ namespace PromotionAggregator.Logic.Models
             set
             {
                 if (!Uri.IsWellFormedUriString(value, UriKind.Absolute))
-                    throw new ArgumentException("Невірне писилання");
+                    throw new ArgumentException("Невірне посилання");
                 url = value;
             }
         }

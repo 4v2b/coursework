@@ -38,8 +38,16 @@ namespace PromotionAggeregator.Presentation.Views
                 {
                     type.Text = "Акція";
                 }
-                title.Text = promotion.Title;
-                endDate.Text = "Дійсне до: " + promotion.EndDate.ToShortDateString();
+                if (promotion.Title.Length > 20)
+                {
+                    title.Text = promotion.Title.Substring(0, 19) + "...";
+
+                }
+                else
+                {
+                    title.Text = promotion.Title;
+                }
+                endDate.Text = "Діє до: " + promotion.EndDate.ToShortDateString();
             }
         }
 

@@ -23,7 +23,7 @@ namespace PromotionAggregator.Logic.Services
             List<User> users = Context.Context.Instance.Users;
             User user = users.Find(x => x.Email.Equals(email));
             if (user == null)
-                throw new ArgumentException("Користувач з такою електронною поштою не існує");
+                throw new ArgumentException("Користувача з такою\n електронною поштою не існує");
             if(user.CheckPassword(password))
                 return user;
             throw new ArgumentException("Невірний пароль");
@@ -35,7 +35,7 @@ namespace PromotionAggregator.Logic.Services
             List<User> users = Context.Context.Instance.Users;
 
             if (users.Exists(x => x.Email.Equals(email)))
-                throw new ArgumentException("Користувач з такою електронною поштою вже існує");
+                throw new ArgumentException("Користувач з такою\n електронною поштою вже існує");
             if (!password.Equals(repeatPassword))
                 throw new ArgumentException("Паролі не збігаються");
             User user;

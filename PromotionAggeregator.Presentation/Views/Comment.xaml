@@ -8,11 +8,11 @@
     mc:Ignorable="d"
     d:DesignWidth="400">
 
-    <Grid Background="White">
-        <StackPanel Padding="10">
-            <TextBlock Padding="10" x:Name="name" HorizontalAlignment="Left"/>
-            <TextBlock Padding="10" TextWrapping="Wrap" x:Name="content" HorizontalAlignment="Left"/>
-            <TextBlock Padding="10" x:Name="time" HorizontalAlignment="Right"/>
+    <Grid>
+        <StackPanel Padding="10" Width="500">
+            <TextBlock Padding="10" FontSize="12" FontWeight="SemiBold" x:Name="name" HorizontalAlignment="Left"/>
+            <TextBlock Padding="10" FontSize="14" TextWrapping="Wrap" x:Name="content" HorizontalAlignment="Left"/>
+            <TextBlock Padding="10"  FontSize="12" FontWeight="SemiLight"  x:Name="time" HorizontalAlignment="Right"/>
         </StackPanel>
     </Grid>
 </UserControl>

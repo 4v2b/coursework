@@ -18,31 +18,22 @@
 
         </Grid.ColumnDefinitions>
 
-        <controls:DropShadowPanel Color="Black" 
-                          BlurRadius="40"
-                                  OffsetX="1"
-                                  OffsetY="-1"
-                          ShadowOpacity=".1"
-                          HorizontalContentAlignment="Stretch"
-                          VerticalContentAlignment="Stretch">
-            <ScrollViewer Background="White" Grid.Column="0" x:Name="shopsViewer" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0" Padding="10" VerticalScrollBarVisibility="Hidden">
-            <Grid>
-               
-                    <StackPanel>
-                        <TextBlock Padding="10" Text="Доступні магазини" FontSize="20" FontWeight="Light"></TextBlock>
-                        <ListView SelectionMode="None"  IsActiveView="False" x:Name="shops" ItemClick="shops_ItemClick" IsItemClickEnabled="True" IsTapEnabled="False" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="logic:Shop">
-                                    <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="SemiBold"/>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <Button Margin="10" HorizontalAlignment="Center" x:Name="moreBtn" Content="Більше" Click="moreBtn_Click" Style="{StaticResource AuthButton}"/>
-                    </StackPanel>
-                
-            </Grid>
+
+        <ScrollViewer  Grid.Column="0" x:Name="shopsViewer" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0"  VerticalScrollBarVisibility="Hidden">
+
+            <StackPanel Padding="10" Background="White" BorderThickness="1" BorderBrush="{Binding Source={StaticResource SecondaryColor}}">
+                    <TextBlock Padding="10" Text="Доступні магазини" FontSize="20" FontWeight="Light"></TextBlock>
+                    <ListView SelectionMode="None"  IsActiveView="False" x:Name="shops" ItemClick="shops_ItemClick" IsItemClickEnabled="True" IsTapEnabled="False" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="logic:Shop">
+                                <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="SemiBold"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Margin="10" HorizontalAlignment="Center" x:Name="moreBtn" Content="Більше" Click="moreBtn_Click" Style="{StaticResource AuthButton}"/>
+                </StackPanel>
+
         </ScrollViewer>
-        </controls:DropShadowPanel>
 
         <ScrollViewer x:Name="promotionsScroll" Grid.Column="1"  VerticalScrollBarVisibility="Hidden" Margin="20 0 20 0">
             <StackPanel>
@@ -53,10 +44,12 @@
                     HorizontalContentAlignment="Center" 
                     ItemClick="listView_ItemClick" 
                     IsItemClickEnabled="True"
+                    SelectionMode="None"
+                    AllowFocusWhenDisabled="False" AllowFocusOnInteraction="False"
                     >
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="logic:Promotion">
-                            <Grid Background="#FFFFFF" Margin="10">
+                            <Grid Background="#FFFFFF" Margin="10" BorderThickness="1" BorderBrush="{Binding Source={StaticResource SecondaryColor}}">
                                 <viewmodels:PromotionModel Promotion="{x:Bind}" OnPromotionClick="PromotionModel_OnPromotionClick"/>
                             </Grid>
                         </DataTemplate>

@@ -9,7 +9,7 @@
    Height="{Binding Path=ActualHeight, ElementName=myGrid}"
              Width="{Binding Path=ActualWidth, ElementName=myGrid}">
 
-    <Grid x:Name="myGrid" Background="White" Padding="20">
+    <Grid x:Name="myGrid" Background="White" Padding="20" BorderThickness="1" BorderBrush="{Binding Source={StaticResource SecondaryColor}}">
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel>
                 <Grid x:Name="type"  Tapped="Tap" Padding="10">

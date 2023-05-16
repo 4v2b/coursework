@@ -22,13 +22,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace PromotionAggeregator.Presentation.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class AdminMainPage : Page
     {
         private IdentityUser identityUser;
@@ -76,15 +72,6 @@ namespace PromotionAggeregator.Presentation.Views
                     view.ShowAllInShop(shopId);
                 }
             }
-            //if (e.Parameter is Admin)
-            //{
-            //    identityUser = new IdentityUser((Admin)e.Parameter);
-            //    identityUser.Notify += view.CountHandler;
-            //    view.IdentityUser = identityUser;
-            //    searchField.Identity = identityUser;
-            //    searchField.OnSearchClick += view.Search;
-            //    view.PromotionTap += PromotionTap;
-            //}
             base.OnNavigatedTo(e);
         }
 

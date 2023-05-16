@@ -7,6 +7,9 @@ namespace PromotionAggregator.Logic.Models
     public abstract class Promotion:IComparable<Promotion>
     {
         [JsonProperty]
+        private string shopId = string.Empty;
+
+        [JsonProperty]
         private double rating = default;
 
         [JsonProperty]
@@ -24,7 +27,14 @@ namespace PromotionAggregator.Logic.Models
             Comments = new List<Comment>();
         }
 
-        public string ShopId { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string ShopId { get=>shopId; set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException("Посилання на магазин \nне може бути порожнім");
+                shopId = value;
+            }
+            }
 
         [JsonProperty]
         public string Id { get; private set; }

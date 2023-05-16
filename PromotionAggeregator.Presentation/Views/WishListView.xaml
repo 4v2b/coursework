@@ -9,37 +9,40 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="#EFF5F5">
+    <Grid Background="{StaticResource NeutralColor}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="11*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Height="90" Background="AliceBlue" VerticalAlignment="Center" BorderThickness="0,0,0,3">
+        <Grid Grid.Row="0" Height="90" Background="{StaticResource SecondaryColor}" VerticalAlignment="Center" BorderThickness="0,0,0,3">
             <Grid.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
                     <GradientStop Color="#FFEBEBEB" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.BorderBrush>
-            <Button Content="Вийти" VerticalAlignment="Center" Click="logout_Click" HorizontalAlignment="Right" Margin="0,0,30,0"/>
-            <Button Content="Додати промокод" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0" Click="Button_Click"/>
-            <Button VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,250,0" Click="Button_Click_1">
-                <FontIcon x:Name="wishIcon" FontFamily="Segoe MDL2 Assets" Glyph="&#xEB52;"/>
+            <Button Content="Вийти" VerticalAlignment="Center" Click="logout_Click" HorizontalAlignment="Right" Margin="0,0,30,0" Style="{StaticResource AuthButton}"/>
+            <Button Content="Додати промокод" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0" Click="Button_Click" Style="{StaticResource AuthButton}"/>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,250,0" Click="Button_Click_1" Background="#00000000">
+                <Button.Foreground>
+                    <SolidColorBrush Color="#FF497174"/>
+                </Button.Foreground>
+                <FontIcon x:Name="wishIcon" FontFamily="Segoe MDL2 Assets" Glyph="&#xEB52;" FocusVisualPrimaryBrush="#FF497174"/>
             </Button>
         </Grid>
-        <ScrollViewer Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Hidden">
-            <StackPanel>
+        <ScrollViewer Background="{Binding Source={StaticResource NeutralColor}}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Hidden">
+            <StackPanel Background="{StaticResource NeutralColor}">
                 <Button Click="Button_Click_2" Margin="0 15 15 15" Foreground="Black" Background="#00000000" HorizontalAlignment="Left">
                     <SymbolIcon Symbol="Home"/>
                 </Button>
                 <TextBlock x:Name="message" Text="Ваш список бажаного порожній" FontSize="22" FontWeight="Bold" VerticalAlignment="Center"/>
-            <ListView x:Name="wishList" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Promotion">
-                        <local:WishlistItem Promotion="{x:Bind}" OnRemoveClick="WishlistItem_OnRemoveClick"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                <ListView x:Name="wishList" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Promotion">
+                            <local:WishlistItem Promotion="{x:Bind}" OnRemoveClick="WishlistItem_OnRemoveClick"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackPanel>
         </ScrollViewer>
 

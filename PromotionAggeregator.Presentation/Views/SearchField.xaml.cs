@@ -31,7 +31,7 @@ namespace PromotionAggeregator.Presentation.Views
 
         public SearchField()
         {
-            categories = Util.CategoryMap;
+            categories = CategoryResource.CategoryMap;
             this.InitializeComponent();
         }
 

@@ -40,6 +40,7 @@ namespace PromotionAggeregator.Presentation.Views
         {
             this.InitializeComponent();
             SetDefaultState(shops);
+           
             Refresh();
             searchInfo.Visibility = Visibility.Collapsed;
         }
@@ -122,7 +123,7 @@ namespace PromotionAggeregator.Presentation.Views
 
         public void Refresh()
         {
-            listView.ItemsSource = Context.Instance.Promotions;
+            listView.ItemsSource = Context.Instance.Promotions.OrderByDescending(p=>p);
         }
 
 

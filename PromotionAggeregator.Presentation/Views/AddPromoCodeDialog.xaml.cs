@@ -34,7 +34,7 @@ namespace PromotionAggeregator.Presentation.Views
         {
             this.InitializeComponent();
             shopBox.ItemsSource = Context.Instance.Shops;
-            categoryMap = Util.CategoryMap;
+            categoryMap = CategoryResource.CategoryMap;
             selectedCategories = new List<Category>();
         }
 
@@ -61,6 +61,7 @@ namespace PromotionAggeregator.Presentation.Views
                         promoCode.Categories.Add(c);
                     }
                 }
+                promoCode.Code = uniqueAtributeValue.Text;
                 this.Hide();
                 PromoCodeConfirmed?.Invoke(this, promoCode);
             }

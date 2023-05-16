@@ -18,6 +18,7 @@ namespace PromotionAggregator.Logic.Models
             UserId = userId;
         }
 
+        [JsonProperty]
         public DateTime PublicationDate { get; private set;}
 
         [JsonIgnore]

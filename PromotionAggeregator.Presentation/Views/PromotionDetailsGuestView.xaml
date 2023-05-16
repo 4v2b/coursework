@@ -4,69 +4,102 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PromotionAggeregator.Presentation.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:PromotionAggregator.Logic.Models" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
     <Grid Background="#EFF5F5">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="11*"/>
+
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Height="90" Background="AliceBlue" VerticalAlignment="Center" BorderThickness="0,0,0,3">
+        <controls:DropShadowPanel Color="Black" 
+                          BlurRadius="50"
+                                  OffsetY="-20"
+                          ShadowOpacity=".2"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Stretch">
+            <Grid Grid.Row="0" Height="90" Background="{StaticResource SecondaryColor}" VerticalAlignment="Center" BorderThickness="0,0,0,3">
             <Grid.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
                     <GradientStop Color="#FFEBEBEB" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.BorderBrush>
-            <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0"/>
-            <Button Content="Увійти" VerticalAlignment="Center" Click="SignInClick" HorizontalAlignment="Right" Margin="0,0,30,0"/>
-            <Button Content="Зареєструватися" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,120,0" Click="RegisterClick"/>
+            <Button Content="Увійти" VerticalAlignment="Center" Click="SignInClick" HorizontalAlignment="Right" Margin="0,0,30,0" Style="{StaticResource AuthButton}"/>
+            <Button Content="Зареєструватися" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,120,0" Click="RegisterClick" Style="{StaticResource AuthButton}"/>
         </Grid>
-        <ScrollViewer Grid.Row="1" Grid.RowSpan="11" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-            <Grid Background="#EFF5F5">
+
+            </controls:DropShadowPanel>
+            
+        <ScrollViewer x:Name="mainViewer" HorizontalAlignment="Stretch" Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Background="{StaticResource NeutralColor}">
+            <Grid Background="{Binding Source={StaticResource NeutralColor}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Grid.ColumnSpan="12">
-                    <TextBlock Text="Коментарі" FontSize="32" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
-                    <ListView x:Name="comments" ItemsSource="{x:Bind Promotion.Comments}"  Width="400" HorizontalAlignment="Center">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="20">
-                                    <TextBlock Text="{Binding UserId}"/>
-                                    <TextBlock Text="{Binding Text}"/>
-                                    <TextBlock Text="{Binding PublicationDate}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+
+                <StackPanel Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Width="{Binding ElementName=newPanel, Path=ActualWidth}">
+
+                    <Button  Click="Button_Click_2" Margin="20" Foreground="Black" Background="#00000000" HorizontalAlignment="Left">
+                        <SymbolIcon Symbol="Home"/>
+                    </Button>
+
+                    <StackPanel x:Name="newPanel" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Orientation="Horizontal" >
+
+                        <StackPanel Background="White" Padding="20"  Margin="20" BorderThickness="1" BorderBrush="{Binding Source={StaticResource SecondaryColor}}">
+                            <TextBlock Text="Магазин" FontWeight="Light" Margin="10" HorizontalAlignment="Center" FontSize="14"/>
+                            <TextBlock x:Name="shopName"/>
+                            <HyperlinkButton x:Name="shopLink" HorizontalAlignment="Center" >
+                                <TextBlock Text="Перейти на сайт магазину"/>
+                            </HyperlinkButton>
+                            <Button Content="Переглянути всі пропозиції" Click="ShowShopPromotions" Style="{StaticResource AuthButton}"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="promoPanel" MinWidth="400" Background="White" Margin="20" Padding="20" DataContext="{x:Bind Promotion}" BorderThickness="1" BorderBrush="{Binding Source={StaticResource SecondaryColor}}">
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Width="{Binding ElementName=promoPanel, Path=ActualWidth}">
+                                <TextBlock x:Name="promoType" Margin="5" VerticalAlignment="Center"/>
+
+                                <RatingControl Foreground="Aqua" VerticalAlignment="Center"  x:Name="rating"  FocusVisualSecondaryBrush="{StaticResource AccentColor}" Background="{StaticResource PrimaryColor}" BorderBrush="{StaticResource AccentColor}"/>
+                                <TextBlock VerticalAlignment="Center" x:Name="globalRating" FontSize="10" FontWeight="Light" Margin="3" Text="{Binding Rating}"/>
+
+                            </StackPanel>
+
+
+                            <TextBlock x:Name="titleBlock" TextWrapping="Wrap" FontWeight="Bold" FontSize="20"/>
+                            <TextBlock x:Name="descriptionBlock" TextWrapping="Wrap"/>
+                            <Button HorizontalAlignment="Right" x:Name="action" Click="action_Click" Style="{StaticResource CancelButton}">
+                                <TextBlock x:Name="btnContent" Text="Content" Visibility="Visible"/>
+                            </Button>
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+
+                    <StackPanel HorizontalAlignment="Stretch" Margin="0 200 0 0" MaxWidth="500">
+                        <TextBlock Text="Коментарі" FontSize="32" FontWeight="SemiLight" HorizontalAlignment="Left"/>
+                        <ListView Margin="0 20 0 20" x:Name="comments" ItemsSource="{x:Bind Promotion.Comments}"  Width="550" HorizontalAlignment="Center" SelectionMode="None" AllowFocusWhenDisabled="False" AllowFocusOnInteraction="False">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Comment">
+                                    <!--<StackPanel Margin="20">
+                                        <TextBlock Text="{Binding UserId}"/>
+                                        <TextBlock Text="{Binding Text}"/>
+                                        <TextBlock Text="{Binding PublicationDate}"/>
+                                    </StackPanel>-->
+                                    <Grid Padding="10 5 5 5" Background="White" BorderThickness="1" BorderBrush="{Binding Source={StaticResource SecondaryColor}}" HorizontalAlignment="Center" >
+                                        <local:CommentElement Comment="{x:Bind}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
-
         </ScrollViewer>
     </Grid>
 </Page>

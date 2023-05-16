@@ -25,7 +25,7 @@ namespace PromotionAggeregator.Presentation.Views
         {
             set
             {
-                name.Text = "Користувач " + value.UserId.Substring(0,8);
+                name.Text = "@" + value.UserId.Substring(0,8);
                 content.Text = value.Text;
                 time.Text = value.PublicationDate.ToString();
             }

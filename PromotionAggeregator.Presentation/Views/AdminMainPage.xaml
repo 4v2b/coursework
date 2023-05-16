@@ -10,49 +10,31 @@
 
 
     <Grid Background="#EFF5F5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="11*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="12" Height="90" Background="AliceBlue" VerticalAlignment="Center" BorderThickness="0,0,0,3">
-            <Grid.BorderBrush>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FFEBEBEB" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.BorderBrush>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="12" Height="90" Background="{StaticResource SecondaryColor}" VerticalAlignment="Center" BorderThickness="0,0,0,3">
             <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0"/>
-            <Button Content="Вийти" VerticalAlignment="Center" Click="logout_Click" HorizontalAlignment="Right" Margin="0,0,30,0"/>
-            <Button Content="+" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0" Click="Button_ClickAsync"/>
-            <Button Content="-" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,200,0" Click="NavigateToAdminControlClick"/>
-            <Button Content="+Admin" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,300,0" Click="Button_Click"/>
-            <Button Content="+Shop" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,400,0" Click="Button_Click_1"/>
-
+            <Button Content="Вийти" VerticalAlignment="Center" Click="logout_Click" HorizontalAlignment="Right" Margin="0,0,30,0" Style="{StaticResource AuthButton}"/>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0" Style="{StaticResource CancelButton}">
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <Button Content="Додати акційну пропозицію" VerticalAlignment="Center" HorizontalAlignment="Right"  Click="Button_ClickAsync"/>
+                            <Button Content="Додати магазин" VerticalAlignment="Center" HorizontalAlignment="Right" Click="Button_Click_1"/>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+                <SymbolIcon Symbol="Add"></SymbolIcon>
+            </Button>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,150,0" Click="NavigateToAdminControlClick" Style="{StaticResource CancelButton}">
+                <SymbolIcon Symbol="Clock"></SymbolIcon>
+            </Button>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,200,0" Click="Button_Click" Style="{StaticResource CancelButton}">
+                <SymbolIcon Symbol="AddFriend"></SymbolIcon>
+            </Button>
         </Grid>
-        <local:MainView HorizontalAlignment="Stretch" x:Name="view" Grid.Column="0" Grid.ColumnSpan="12" Grid.Row="1" Grid.RowSpan="11"/>
+        <local:MainView HorizontalAlignment="Stretch" x:Name="view" Grid.Row="1"/>
     </Grid>
 </Page>

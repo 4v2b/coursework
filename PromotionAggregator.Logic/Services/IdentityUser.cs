@@ -70,7 +70,7 @@ namespace PromotionAggregator.Logic.Services
                 temp = temp.Where(x => x.AddingDate.CompareTo(DateTime.Now.AddDays(-periodInDays)) >=0);
             }
             Notify?.Invoke(temp.Count());
-            return new List<Promotion>(temp);
+            return new List<Promotion>(temp.OrderByDescending(p=>p));
         }
 
         public List<Promotion> GetPromotionsInCategory(Category category)
@@ -78,7 +78,7 @@ namespace PromotionAggregator.Logic.Services
             List<Promotion> promotions = Context.Context.Instance.Promotions;
             var list = from p in promotions 
                        where p.Categories.Contains(category) 
-                       orderby p.Rating 
+                       orderby p.Rating
                        select p;
             Notify?.Invoke(list.Count());
             return list.ToList<Promotion>();
@@ -89,12 +89,11 @@ namespace PromotionAggregator.Logic.Services
             List<Promotion> promotions = Context.Context.Instance.Promotions;
             var list = from p in promotions
                        where p.ShopId.Equals(shopId)
-                       orderby p
+                       orderby p descending
                        orderby p.Rating
                        select p;
             Notify?.Invoke(list.Count());
             return list.ToList<Promotion>();
         }
-
     }
 }
