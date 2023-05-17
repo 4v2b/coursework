@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="PromotionAggeregator.Presentation.Views.AdminMainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PromotionAggeregator.Presentation.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid Background="#EFF5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+        <controls:DropShadowPanel Color="Black" 
+                          BlurRadius="50"
+                                  OffsetY="-20"
+                          ShadowOpacity=".2"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Stretch">
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="12" Height="90" Background="{StaticResource SecondaryColor}" VerticalAlignment="Center" BorderThickness="0,0,0,3">
+                <local:SearchField x:Name="searchField" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200 0 0 0"/>
+                <Button Content="Вийти" VerticalAlignment="Center" Click="LogoutClick" HorizontalAlignment="Right" Margin="0,0,30,0" Style="{StaticResource AuthButton}"/>
+                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0" Style="{StaticResource CancelButton}">
+                    <Button.Flyout>
+                        <Flyout>
+                            <StackPanel>
+                                <Button Margin="5"  Style="{StaticResource AuthButton}" Content="Додати акційну пропозицію" VerticalAlignment="Center" HorizontalAlignment="Stretch"  Click="CallPromotionDialog"/>
+                                <Button Margin="5" Style="{StaticResource AuthButton}" Content="Додати магазин" VerticalAlignment="Center" HorizontalAlignment="Stretch" Click="CallShopDialog"/>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                    <SymbolIcon Symbol="Add"></SymbolIcon>
+                </Button>
+                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,150,0" Click="NavigateToAdminControlClick" Style="{StaticResource CancelButton}">
+                    <SymbolIcon Symbol="Clock"></SymbolIcon>
+                </Button>
+                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,200,0" Click="CallUserDialog" Style="{StaticResource CancelButton}">
+                    <SymbolIcon Symbol="AddFriend"></SymbolIcon>
+                </Button>
+
+            </Grid>
+        </controls:DropShadowPanel>
+        <local:GeneralView HorizontalAlignment="Stretch" x:Name="view" Grid.Row="1"/>
+    </Grid>
+</Page>

@@ -6,9 +6,6 @@
     xmlns:local="using:PromotionAggeregator.Presentation"
     >
     <Application.Resources>
-        <!-- Creates a resource dictionary in the page context -->
-       
-
         <ResourceDictionary>
             <Style TargetType="Button" x:Key="AuthButton">
                 <Setter Property="Foreground" Value="#D6E4E5" />

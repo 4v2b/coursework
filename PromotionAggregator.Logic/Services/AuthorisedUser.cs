@@ -60,6 +60,7 @@ namespace PromotionAggregator.Logic.Services
                 if (promotion != null)
                 {
                     promotion.Rating = rating;
+                    RatedPromotions.Add(promotionId);
                     return true;
                 }
             }
