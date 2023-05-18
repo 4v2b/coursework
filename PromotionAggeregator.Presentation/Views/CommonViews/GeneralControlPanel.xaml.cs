@@ -13,8 +13,6 @@ namespace PromotionAggeregator.Presentation.Views
     {
         public IdentityUser IdentityUser { get; set; }
 
-        //public string Message { get=>searchInfo.Text; set=>searchInfo.Text = value; }
-
         public event EventHandler<Promotion> PromotionTap;
 
         public void Search(object sender, List<Promotion> e)

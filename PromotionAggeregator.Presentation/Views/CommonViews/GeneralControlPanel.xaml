@@ -51,7 +51,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="logic:Promotion">
                             <Grid Background="#FFFFFF" Margin="10" BorderThickness="1" BorderBrush="{Binding Source={StaticResource SecondaryColor}}">
-                                <viewmodels:PromotionModel Promotion="{x:Bind}" PromotionClicked="PromotionClick"/>
+                                <viewmodels:PromotionItem Promotion="{x:Bind}" PromotionClicked="PromotionClick"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
