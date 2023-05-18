@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="PromotionAggeregator.Presentation.Views.PromotionAdminView"
+    x:Class="PromotionAggeregator.Presentation.Views.PromotionDetailsAdminPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PromotionAggeregator.Presentation.Views"
@@ -53,7 +53,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="models:Comment">
                                     <StackPanel Padding="10 5 10 5" Orientation="Horizontal" Background="White" BorderThickness="1" BorderBrush="{Binding Source={StaticResource SecondaryColor}}" HorizontalAlignment="Center" >
-                                        <local:CommentElement Comment="{x:Bind}" />
+                                        <local:CommentItem Comment="{x:Bind}" />
                                         <Button x:Name="deleteButton" Margin="5">
                                             <Button.Flyout>
                                                 <Flyout x:Name="commentFlyout">

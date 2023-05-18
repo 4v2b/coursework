@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace PromotionAggeregator.Presentation.Views
 {
-    public sealed partial class AddPromotionDialog : ContentDialog
+    public sealed partial class AddAdvancedPromotionDialog : ContentDialog
     {
         private Promotion promotion;
 
@@ -17,9 +17,9 @@ namespace PromotionAggeregator.Presentation.Views
 
         private List<Category> selectedCategories;
 
-        public AddPromotionDialog()
+        public AddAdvancedPromotionDialog()
         {
-            categoryMap = CategoryResource.CategoryMap;
+            categoryMap = CategoriesMap.CategoryMap;
             this.InitializeComponent();
             offerCheck.IsChecked = true;
             shopBox.ItemsSource = Context.Instance.Shops;

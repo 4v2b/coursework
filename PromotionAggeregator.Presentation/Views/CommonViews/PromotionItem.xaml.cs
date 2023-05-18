@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Input;
 
 namespace PromotionAggeregator.Presentation.ViewModels
 {
-    public sealed partial class PromotionModel : UserControl
+    public sealed partial class PromotionItem : UserControl
     {
         private Promotion promotion;
 
@@ -47,7 +47,7 @@ namespace PromotionAggeregator.Presentation.ViewModels
         public event EventHandler<Promotion> PromotionClicked;
 
 
-        public PromotionModel()
+        public PromotionItem()
         {
             this.InitializeComponent();
         }

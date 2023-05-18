@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace PromotionAggeregator.Presentation.Views
 {
-    public sealed partial class CommentElement : UserControl
+    public sealed partial class CommentItem : UserControl
     {
         public Comment Comment
         {
@@ -16,7 +16,7 @@ namespace PromotionAggeregator.Presentation.Views
             }
         }
 
-        public CommentElement()
+        public CommentItem()
         {
             this.InitializeComponent();
         }

@@ -32,7 +32,7 @@
                 <Button Content="Зареєструватися" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,120,0" Click="RegisterClick" Background="#FF497174" Foreground="#FFD6E4E5" FontWeight="Bold" Style="{Binding Source={StaticResource AuthButton}}"/>
             </Grid>
         </controls:DropShadowPanel>
-        <local:GeneralView HorizontalAlignment="Stretch" x:Name="view" Grid.Row="1"/>
+        <local:GeneralControlPanel HorizontalAlignment="Stretch" x:Name="view" Grid.Row="1"/>
 
     </Grid>
 </Page>

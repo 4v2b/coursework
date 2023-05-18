@@ -8,12 +8,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PromotionAggeregator.Presentation.Views
 {
-    public sealed partial class PromotionAdminView : Page
+    public sealed partial class PromotionDetailsAdminPage : Page
     {
         private Promotion Promotion { get; set; }
         private Admin Admin { get; set; }
 
-        public PromotionAdminView()
+        public PromotionDetailsAdminPage()
         {
             this.InitializeComponent();
         }
@@ -42,7 +42,7 @@ namespace PromotionAggeregator.Presentation.Views
 
         private void LogoutClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(AuthorisationPage));
+            Frame.Navigate(typeof(GuestMainPage));
         }
 
         private void DeleteClick(object sender, RoutedEventArgs e)
@@ -53,7 +53,7 @@ namespace PromotionAggeregator.Presentation.Views
                 Admin.RemoveComment(userId, Promotion.Id);
                 Context.Instance.SaveAll();
                 var parameters = Tuple.Create(Promotion, Admin);
-                Frame.Navigate(typeof(PromotionAdminView), parameters);
+                Frame.Navigate(typeof(PromotionDetailsAdminPage), parameters);
             }
         }
 
@@ -73,7 +73,7 @@ namespace PromotionAggeregator.Presentation.Views
 
         private void ShowShopClick(object sender, EventArgs e)
         {
-            Frame.Navigate(typeof(GuestMainPage), Promotion.ShopId);
+            Frame.Navigate(typeof(AdminMainPage), Promotion.ShopId);
         }
     }
 }

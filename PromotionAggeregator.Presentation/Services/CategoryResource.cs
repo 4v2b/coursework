@@ -1,15 +1,11 @@
 ﻿using PromotionAggregator.Logic.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PromotionAggeregator.Presentation.Services
 {
-    public static class CategoryResource
+    public static class CategoriesMap
     {
-        private static readonly Dictionary<string, Category> categoryMap = new Dictionary<string, Category>()
+        private static Dictionary<string, Category> categoryMap = new Dictionary<string, Category>()
             {
                 { "Сад та город", Category.Garden} ,
                 { "Мода", Category.Fashion} ,
@@ -21,6 +17,6 @@ namespace PromotionAggeregator.Presentation.Services
                 { "Розваги", Category.Entertainment }
             };
 
-        public static Dictionary<string, Category> CategoryMap { get=>categoryMap; }
+        public static Dictionary<string, Category> CategoryMap { get => categoryMap; }
     }
 }

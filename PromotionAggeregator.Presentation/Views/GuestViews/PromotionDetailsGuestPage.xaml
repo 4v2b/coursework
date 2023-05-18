@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="PromotionAggeregator.Presentation.Views.PromotionDetailsGuestView"
+    x:Class="PromotionAggeregator.Presentation.Views.PromotionDetailsGuestPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PromotionAggeregator.Presentation.Views"
@@ -59,7 +59,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="models:Comment">
                                     <Grid Padding="10 5 5 5" Background="White" BorderThickness="1" BorderBrush="{Binding Source={StaticResource SecondaryColor}}" HorizontalAlignment="Center" >
-                                        <local:CommentElement Comment="{x:Bind}" />
+                                        <local:CommentItem Comment="{x:Bind}" />
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

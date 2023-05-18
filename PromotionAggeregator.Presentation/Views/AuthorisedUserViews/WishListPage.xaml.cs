@@ -8,11 +8,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PromotionAggeregator.Presentation.Views
 {
-    public sealed partial class WishListView : Page
+    public sealed partial class WishListPage : Page
     {
         public AuthorisedUser CurrentUser { get; set; }
 
-        public WishListView()
+        public WishListPage()
         {
             this.InitializeComponent();
         }
@@ -36,13 +36,13 @@ namespace PromotionAggeregator.Presentation.Views
         private void GetPromotionDetailsClick(object sender, ItemClickEventArgs e)
         {
             var parameters = Tuple.Create(e.ClickedItem as Promotion, CurrentUser);
-            Frame.Navigate(typeof(PromotionDetailsAuthorisedUserView), parameters);
+            Frame.Navigate(typeof(PromotionDetailsAuthorisedUserPage), parameters);
         }
 
         private void RemovePromotionClick(object sender, string e)
         {
             CurrentUser.RemoveFromWishlist(e);
-            Frame.Navigate(typeof(WishListView), CurrentUser);
+            Frame.Navigate(typeof(WishListPage), CurrentUser);
         }
 
         private void LogoutClick(object sender, RoutedEventArgs e)

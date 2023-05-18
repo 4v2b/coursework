@@ -31,6 +31,6 @@
                 </Button>
             </Grid>
         </controls:DropShadowPanel>
-        <local:GeneralView HorizontalAlignment="Stretch" x:Name="view" Grid.Row="1"/>
+        <local:GeneralControlPanel HorizontalAlignment="Stretch" x:Name="view" Grid.Row="1"/>
     </Grid>
 </Page>

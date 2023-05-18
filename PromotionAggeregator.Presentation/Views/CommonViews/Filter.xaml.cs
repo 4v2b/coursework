@@ -15,7 +15,6 @@ namespace PromotionAggeregator.Presentation.Views
         private int _period = 0;
         private int _rating = -1;
 
-
         public IdentityUser IdentityUser { get; set; }
 
         public Filter()
@@ -26,7 +25,6 @@ namespace PromotionAggeregator.Presentation.Views
         public event EventHandler<List<Promotion>> FilterClicked;
 
         public event EventHandler ResetClicked;
-
 
         private void ResetClick(object sender, RoutedEventArgs e)
         {
@@ -45,18 +43,18 @@ namespace PromotionAggeregator.Presentation.Views
             SymbolIcon icon;
             if ((sender as Grid).Name.Equals("type"))
             {
-                panel = checkBoxes1;
-                icon = symbol1;
+                panel = typeBoxes;
+                icon = typeSymbol;
             }
             else if((sender as Grid).Name.Equals("period"))
             {
-                panel = checkBoxes2;
-                icon = symbol2;
+                panel = periodBoxes;
+                icon = periodSymbol;
             }
             else if((sender as Grid).Name.Equals("rating"))
             {
-                panel = checkBoxes3;
-                icon = symbol3;
+                panel = ratingBoxes;
+                icon = ratingSymbol;
             }
             else
             {

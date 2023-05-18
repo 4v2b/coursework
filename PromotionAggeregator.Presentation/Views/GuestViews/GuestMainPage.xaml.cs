@@ -22,9 +22,6 @@ namespace PromotionAggeregator.Presentation.Views
 
         private void SignInClick(object sender, RoutedEventArgs e)
         {
-            DataPackage package = new DataPackage();
-            package.SetText("text");
-            Clipboard.SetContent(package);
             Frame.Navigate(typeof(AuthorisationPage));
         }
 
@@ -35,7 +32,7 @@ namespace PromotionAggeregator.Presentation.Views
 
         private void PromotionTap(object sender, Promotion promotion)
         {
-            Frame.Navigate(typeof(PromotionDetailsGuestView), promotion);
+            Frame.Navigate(typeof(PromotionDetailsGuestPage), promotion);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

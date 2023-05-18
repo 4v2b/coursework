@@ -20,7 +20,7 @@ namespace PromotionAggeregator.Presentation.Views
         {
             this.InitializeComponent();
             shopBox.ItemsSource = Context.Instance.Shops;
-            categoryMap = CategoryResource.CategoryMap;
+            categoryMap = CategoriesMap.CategoryMap;
             selectedCategories = new List<Category>();
         }
 

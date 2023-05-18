@@ -6,11 +6,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PromotionAggeregator.Presentation.Views
 {
-    public sealed partial class PromotionDetailsGuestView : Page
+    public sealed partial class PromotionDetailsGuestPage : Page
     {
         private Promotion Promotion { get; set; }
 
-        public PromotionDetailsGuestView()
+        public PromotionDetailsGuestPage()
         {
             this.InitializeComponent();
         }

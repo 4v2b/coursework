@@ -8,12 +8,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PromotionAggeregator.Presentation.Views
 {
-    public sealed partial class PromotionDetailsAuthorisedUserView : Page
+    public sealed partial class PromotionDetailsAuthorisedUserPage : Page
     {
         private Promotion Promotion { get; set; }
         private AuthorisedUser AuthorisedUser { get; set; }
 
-        public PromotionDetailsAuthorisedUserView()
+        public PromotionDetailsAuthorisedUserPage()
         {
             this.InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace PromotionAggeregator.Presentation.Views
                 AuthorisedUser = parameters.Item2;
                 details.ShopClicked += ShowShopClick;
                 details.CurrentUser = AuthorisedUser;
-                details.Promotion = Promotion;               
+                details.Promotion = Promotion;
             }
             base.OnNavigatedTo(e);
         }
@@ -36,10 +36,10 @@ namespace PromotionAggeregator.Presentation.Views
             if (!string.IsNullOrEmpty(commentField.Text))
             {
                 AuthorisedUser.PostComment(commentField.Text, Promotion.Id);
+                Context.Instance.SaveAll();
+                var parameters = Tuple.Create(Promotion, AuthorisedUser);
+                Frame.Navigate(typeof(PromotionDetailsAuthorisedUserPage), parameters);
             }
-            Context.Instance.SaveAll();
-            var parameters = Tuple.Create(Promotion, AuthorisedUser);
-            Frame.Navigate(typeof(PromotionDetailsAuthorisedUserView), parameters);
         }
 
         private void ShowShopClick(object sender, EventArgs e)
@@ -47,10 +47,10 @@ namespace PromotionAggeregator.Presentation.Views
             var parameters = Tuple.Create(Promotion.ShopId, AuthorisedUser);
             Frame.Navigate(typeof(AuthorisedUserMainPage), parameters);
         }
-       
+
         private void GetWishlist(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(WishListView), AuthorisedUser);
+            Frame.Navigate(typeof(WishListPage), AuthorisedUser);
         }
 
         private void LogoutClick(object sender, RoutedEventArgs e)

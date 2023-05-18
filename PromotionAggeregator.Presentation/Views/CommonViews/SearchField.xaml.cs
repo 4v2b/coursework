@@ -16,7 +16,7 @@ namespace PromotionAggeregator.Presentation.Views
 
         public SearchField()
         {
-            categories = CategoryResource.CategoryMap;
+            categories = CategoriesMap.CategoryMap;
             this.InitializeComponent();
         }
 

@@ -9,11 +9,11 @@ using Windows.UI.Xaml.Controls;
 
 namespace PromotionAggeregator.Presentation.Views
 {
-    public sealed partial class GeneralView : UserControl
+    public sealed partial class GeneralControlPanel : UserControl
     {
         public IdentityUser IdentityUser { get; set; }
 
-        public string Message { get=>searchInfo.Text; set=>searchInfo.Text = value; }
+        //public string Message { get=>searchInfo.Text; set=>searchInfo.Text = value; }
 
         public event EventHandler<Promotion> PromotionTap;
 
@@ -22,7 +22,7 @@ namespace PromotionAggeregator.Presentation.Views
             listView.ItemsSource = e;
         }
 
-        public GeneralView()
+        public GeneralControlPanel()
         {
             this.InitializeComponent();
             SetDefaultState(shops);

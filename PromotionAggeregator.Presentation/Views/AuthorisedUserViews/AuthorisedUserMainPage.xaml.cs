@@ -12,7 +12,6 @@ namespace PromotionAggeregator.Presentation.Views
     public sealed partial class AuthorisedUserMainPage : Page
     {
         private IdentityUser identityUser;
-        private AddPromoCodeDialog dialog;
 
         public AuthorisedUserMainPage()
         {
@@ -50,12 +49,12 @@ namespace PromotionAggeregator.Presentation.Views
         private void PromotionTap(object sender, Promotion promotion)
         {
             var parameters = Tuple.Create(promotion, identityUser.User as AuthorisedUser);
-            Frame.Navigate(typeof(PromotionDetailsAuthorisedUserView), parameters);
+            Frame.Navigate(typeof(PromotionDetailsAuthorisedUserPage), parameters);
         }
 
         private void LogoutClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(AuthorisationPage));
+            Frame.Navigate(typeof(GuestMainPage));
         }
 
         public void AddPromoCode(object sender, PromoCode p)
@@ -68,7 +67,7 @@ namespace PromotionAggeregator.Presentation.Views
 
         private async void CallDialog(object sender, RoutedEventArgs e)
         {
-            dialog = new AddPromoCodeDialog();
+            AddPromoCodeDialog dialog = new AddPromoCodeDialog();
             dialog.PromoCodeConfirmed -= AddPromoCode;
             dialog.PromoCodeConfirmed += AddPromoCode;
              await dialog.ShowAsync();
@@ -76,7 +75,7 @@ namespace PromotionAggeregator.Presentation.Views
 
         private void GetWishlist(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(WishListView), identityUser.User as AuthorisedUser);
+            Frame.Navigate(typeof(WishListPage), identityUser.User as AuthorisedUser);
         }
     }
 }
