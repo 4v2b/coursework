@@ -23,7 +23,7 @@ namespace PromotionAggregator.Logic.Services
             List<User> users = Context.Context.Instance.Users;
             User user = users.Find(x => x.Email.Equals(email));
             if (user == null)
-                throw new ArgumentException("Користувача з такою\n електронною поштою не існує");
+                throw new ArgumentException("Користувача з такою\nелектронною поштою не існує");
             if(user.CheckPassword(password))
                 return user;
             throw new ArgumentException("Невірний пароль");

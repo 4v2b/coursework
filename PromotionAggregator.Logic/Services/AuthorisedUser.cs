@@ -66,11 +66,5 @@ namespace PromotionAggregator.Logic.Services
             }
             return false;
         }
-
-        public bool WishlistContains(string promotionId)
-        {
-            return Wishlist.Contains(promotionId);
-        }
-
     }
 }

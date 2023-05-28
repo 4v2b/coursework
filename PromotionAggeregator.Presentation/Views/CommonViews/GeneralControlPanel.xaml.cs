@@ -23,10 +23,8 @@ namespace PromotionAggeregator.Presentation.Views
         public GeneralControlPanel()
         {
             this.InitializeComponent();
-            SetDefaultState(shops);
-           
+            SetDefaultState(shops);    
             Refresh();
-            searchInfo.Visibility = Visibility.Collapsed;
         }
 
         private void FilterClick(object sender, List<Promotion> e)

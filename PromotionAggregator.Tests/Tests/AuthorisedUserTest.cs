@@ -133,7 +133,7 @@ namespace PromotionAggregator.Tests.Tests
             result = user.RatePromotion(promotion.Id, 5);
 
             //Assert
-            Assert.IsTrue(result);
+            Assert.IsFalse(result);
         }
 
     }

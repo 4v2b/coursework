@@ -75,7 +75,7 @@ namespace PromotionAggeregator.Presentation.Views.CommonViews
 
         private void SwapButton()
         {
-            if ((CurrentUser as AuthorisedUser).WishlistContains(Promotion.Id))
+            if ((CurrentUser as AuthorisedUser).Wishlist.Contains(Promotion.Id))
             {
                 wishIcon.Glyph = "\xEB52";
                 wishBtn.Click -= AddWish;

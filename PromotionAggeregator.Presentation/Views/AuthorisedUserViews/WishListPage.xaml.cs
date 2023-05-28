@@ -23,7 +23,7 @@ namespace PromotionAggeregator.Presentation.Views
             {
                 CurrentUser = e.Parameter as AuthorisedUser;
                 message.Visibility = Visibility.Collapsed;
-                var list = Context.Instance.Promotions.FindAll(x => CurrentUser.WishlistContains(x.Id));
+                var list = Context.Instance.Promotions.FindAll(x => CurrentUser.Wishlist.Contains(x.Id));
                 if(list?.Count < 1)
                 {
                     message.Visibility = Visibility.Visible;

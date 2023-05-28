@@ -10,17 +10,17 @@
     <Grid Background="{StaticResource PrimaryColor}">
         <StackPanel x:Name="stackPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" Background="{StaticResource SecondaryColor}">
             <TextBlock Text="Ел. пошта" Padding="5"/>
-            <TextBox Width="{Binding ElementName=stackPanel}" Margin="5 0 5 5" x:Name="email" HorizontalAlignment="Stretch"/>
+            <TextBox Margin="5 0 5 5" x:Name="email" HorizontalAlignment="Stretch" IsSpellCheckEnabled="False" TextWrapping="Wrap"/>
 
             <TextBlock Text="Пароль" Padding="5"/>
 
-            <PasswordBox x:Name="password" Width="{Binding ElementName=stackPanel}" Margin="5 0 5 5"/>
+            <PasswordBox x:Name="password" Margin="5 0 5 5" MaxLength="24"/>
 
             <TextBlock Text="Повторіть пароль" Padding="5"/>
 
-            <PasswordBox x:Name="repeatPassword" Width="{Binding ElementName=stackPanel}" Margin="5 0 5 5"/>
+            <PasswordBox x:Name="repeatPassword" MaxLength="24" Margin="5 0 5 5"/>
 
-            <TextBlock MaxWidth="{Binding ElementName=stackPanel}" x:Name="errorMessage" Foreground="Crimson"  TextWrapping="WrapWholeWords" HorizontalAlignment="Center" Text=""></TextBlock>
+            <TextBlock MaxWidth="{Binding ElementName=stackPanel, Path=ActualWidth}" x:Name="errorMessage" Foreground="Crimson"  TextWrapping="WrapWholeWords" HorizontalAlignment="Center" Text=""></TextBlock>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="cancel" Margin="8" Content="Відміна" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CancelClick" Height="33" Width="130" Style="{StaticResource CancelButton}"/>
 

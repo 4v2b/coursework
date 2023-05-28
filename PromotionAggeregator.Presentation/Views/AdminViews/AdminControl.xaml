@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="#EFF5F5" >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="11*"/>
@@ -23,6 +23,8 @@
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Stretch">
             <Grid Grid.Row="0" Height="90" Background="{StaticResource SecondaryColor}" VerticalAlignment="Center">
+                <TextBlock Margin="20 0 0 0" FontSize="24" FontFamily="Segoe Print" VerticalAlignment="Center" Foreground="{StaticResource PrimaryColor}">Promoloft</TextBlock>
+
                 <Button Click="LogoutClick" Content="Вийти" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0" Style="{StaticResource AuthButton}"/>
             </Grid>
         </controls:DropShadowPanel>

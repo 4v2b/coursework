@@ -22,6 +22,7 @@
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Stretch">
             <Grid Grid.Row="0" Height="90" Background="{StaticResource SecondaryColor}" VerticalAlignment="Center">
+                <TextBlock Margin="20 0 0 0" FontSize="24" FontFamily="Segoe Print" VerticalAlignment="Center" Foreground="{StaticResource PrimaryColor}">Promoloft</TextBlock>
                 <Button Content="Увійти" VerticalAlignment="Center" Click="SignInClick" HorizontalAlignment="Right" Margin="0,0,30,0" Style="{StaticResource AuthButton}"/>
             <Button Content="Зареєструватися" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,120,0" Click="RegisterClick" Style="{StaticResource AuthButton}"/>
         </Grid>
@@ -50,7 +51,7 @@
 
 
 
-                    <StackPanel HorizontalAlignment="Stretch" Margin="0 200 0 0" MaxWidth="500">
+                    <StackPanel HorizontalAlignment="Stretch" Margin="0 100 0 0" MaxWidth="500">
                         <TextBlock Text="Коментарі" FontSize="32" FontWeight="SemiLight" Margin="0 0 0 20" HorizontalAlignment="Left"/>
 
                         <TextBlock x:Name="commentsInfo" Padding="20" Text="Немає жодного коментаря" FontSize="14" FontWeight="SemiLight" HorizontalAlignment="Center"/>
